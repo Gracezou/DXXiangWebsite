@@ -1,0 +1,7 @@
+@forward "element-plus/theme-chalk/src/common/var.scss" with (
+  $text-color: (
+    "placeholder": #cccccc,
+    "regular": #333333,
+    "primary": #333333,
+  )
+);

@@ -1,0 +1,17 @@
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei";
+}
+
+.el-header {
+  --el-menu-item-height: 94px;
+  --el-menu-item-font-size: 18px;
+}
+
+.el-breadcrumb {
+  --el-text-color-primary: #003153;
+  padding: 50px 55px 40px;
+}

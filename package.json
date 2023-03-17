@@ -1,0 +1,34 @@
+{
+  "name": "daxiaoxiang",
+  "packageManager": "pnpm@7.20.0",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "@element-plus/nuxt": "^1.0.4",
+    "@nuxtjs/color-mode": "^3.2.0",
+    "@types/node": "^18.15.3",
+    "@unocss/nuxt": "^0.49.4",
+    "@vueuse/nuxt": "^9.12.0",
+    "element-plus": "^2.2.30",
+    "nuxt": "^3.2.3",
+    "sass": "^1.58.1",
+    "typescript": "^4.9.5",
+    "vue-router": "^4.1.6"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "webpack",
+        "vite",
+        "vue"
+      ]
+    }
+  }
+}
