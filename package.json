@@ -3,7 +3,7 @@
   "packageManager": "pnpm@7.20.0",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxi build && mkdir .output/server/node_modules/@popperjs && mv .output/server/node_modules/@sxzz/popperjs-es .output/server/node_modules/@popperjs/core",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",

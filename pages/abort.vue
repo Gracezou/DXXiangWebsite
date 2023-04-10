@@ -8,7 +8,11 @@
       <el-divider />
       <section class="part_content">
         <h1>互联网信息服务科技公司</h1>
-        <Image class="company_image" width="960px" />
+        <Image
+          src="/images/internet_company.jpg"
+          class="company_image"
+          width="960px"
+        />
         <p>大小象科技公司是一家专注于信息技术领域的公司。</p>
         <p>
           主要致力于网站和应用程序开发、大数据爬虫分析和逆向工程等领域的研发与应用。
@@ -16,7 +20,11 @@
       </section>
       <section class="part_content">
         <h1>技术领先 服务至上</h1>
-        <Image class="tech_image" width="800px" />
+        <Image
+          src="/images/technology_first.jpg"
+          class="tech_image"
+          width="800px"
+        />
         <p>
           我们一直秉承“技术领先、服务至上”的经营理念，不断推进技术创新和进步。
         </p>
@@ -32,7 +40,7 @@
       </section>
       <section class="part_content">
         <h1>高效的专业团队</h1>
-        <Image class="tech_image" width="800px" />
+        <Image src="/images/team.jpg" class="tech_image" width="800px" />
         <p>
           我们拥有一支优秀的技术团队，包括资深的程序员、工程师和数据研究员。
         </p>

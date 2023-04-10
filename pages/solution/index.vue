@@ -17,7 +17,11 @@
         <p>
           我们致力于建立长期的合作关系，与客户共同发展、共同成长。无论客户面临何种挑战，我们都将竭尽全力为其提供专业的支持和解决方案。
         </p>
-        <Image class="solution_image" width="800px" />
+        <Image
+          src="/images/technolog_solution_provider.jpg"
+          class="solution_image"
+          width="800px"
+        />
       </section>
 
       <section class="part_content">
@@ -31,7 +35,11 @@
         <p>
           而企业和品牌也可以通过将应用程序与网页相互连接，更好地进行市场营销和推广，增加用户的转化率和忠诚度。
         </p>
-        <Image class="solution_image" width="800px" />
+        <Image
+          src="/images/solution_web_app.jpg"
+          class="solution_image"
+          width="800px"
+        />
       </section>
 
       <section class="part_content">

@@ -16,11 +16,10 @@
     <el-menu-item index="/contact">联系我们</el-menu-item>
   </el-menu>
 </template>
-
 <script setup lang="ts"></script>
-
 <style lang="scss">
 .menu_wrapper {
   padding: 0 55px;
+  border-bottom: none;
 }
 </style>

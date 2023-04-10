@@ -1,14 +1,26 @@
 <template>
   <div class="tabs_wrapper">
-    <el-tabs type="card">
-      <el-tab-pane label="技术解决方案">技术解决方案</el-tab-pane>
-      <el-tab-pane label="应用程序与网页">应用程序与网页</el-tab-pane>
-      <el-tab-pane label="网络数据猎手">网络数据猎手</el-tab-pane>
-    </el-tabs>
+    <Image src="/images/data_analyse.webp" />
+    <Image src="/images/gis.png" />
+    <Image src="/images/web_solution.png" />
   </div>
 </template>
-<style lang="scss" scoped>
+<script setup lang="ts">
+import Image from "~~/components/Image.vue";
+</script>
+<style lang="scss">
 .tabs_wrapper {
-  padding: 0 50px;
+  padding: 20px 50px;
+  display: flex;
+  > div {
+    flex: 1;
+    // 高宽比例
+    aspect-ratio: 10/8;
+    border-radius: 20px;
+    cursor: pointer;
+    + & {
+      margin-left: 20px;
+    }
+  }
 }
 </style>

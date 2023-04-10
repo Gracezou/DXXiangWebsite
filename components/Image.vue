@@ -1,14 +1,15 @@
 <template>
-  <el-image :style="`width:${width};height:${height}`" v-bind="$attrs">
+  <ElImage :style="`width:${width};height:${height}`" v-bind="$attrs">
     <template #error>
       <div class="image-slot">
         <el-icon><Picture /></el-icon>
       </div>
     </template>
-  </el-image>
+  </ElImage>
 </template>
 <script setup lang="ts">
 import { Picture } from "@element-plus/icons-vue";
+import { ElImage } from "element-plus";
 const props = defineProps({
   width: { type: String, default: "100%" },
   height: { type: String, default: "100%" },
