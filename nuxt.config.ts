@@ -1,17 +1,9 @@
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   app: {
-    // head
+    // title / description 由 i18n 提供（见 app.vue），完整 SEO 元信息在 B4-04 补齐
     head: {
-      title: "Mighty Elephant 大小象",
-      meta: [
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
-        {
-          hid: "description",
-          name: "description",
-          content: "Mighty Elephant 大小象",
-        },
-      ],
+      meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
   },
@@ -28,7 +20,18 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/about", "/solution", "/contact", "/policy"],
+      routes: [
+        "/",
+        "/about",
+        "/solution",
+        "/contact",
+        "/policy",
+        "/en",
+        "/en/about",
+        "/en/solution",
+        "/en/contact",
+        "/en/policy",
+      ],
     },
   },
 
@@ -41,7 +44,30 @@ export default defineNuxtConfig({
   },
 
   // build modules
-  modules: ["@vueuse/nuxt", "@unocss/nuxt", "@element-plus/nuxt"],
+  modules: [
+    "@vueuse/nuxt",
+    "@unocss/nuxt",
+    "@element-plus/nuxt",
+    "@nuxtjs/i18n",
+  ],
+
+  // 中英双语。中文为默认语言且不带前缀，英文为 /en/*。
+  i18n: {
+    locales: [
+      { code: "zh-CN", language: "zh-CN", name: "中文", file: "zh-CN.json" },
+      { code: "en", language: "en", name: "English", file: "en.json" },
+    ],
+    defaultLocale: "zh-CN",
+    strategy: "prefix_except_default",
+    // hreflang 与 canonical 需要绝对 URL，故必须配置 baseUrl
+    baseUrl: "https://www.daxiaoxiang.com",
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_locale",
+      redirectOn: "root",
+      alwaysRedirect: false,
+    },
+  },
 
   // vueuse
   vueuse: {

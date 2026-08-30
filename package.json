@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@element-plus/nuxt": "^1.1.5",
+    "@nuxtjs/i18n": "^9.5.6",
     "@types/node": "^26.4.0",
     "@unocss/nuxt": "^66.8.1",
     "@vueuse/nuxt": "^14.4.0",

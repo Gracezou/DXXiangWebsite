@@ -3,30 +3,41 @@
     <div class="content">
       <div class="content_main">
         <div class="policy_box">
-          <p>关于更多信息或疑问，请及时联络我们国内服务人员。</p>
-          <NuxtLink to="/policy" class="footer_link footer_link--info">
-            隐私政策
+          <p>{{ $t("footer.policyNote") }}</p>
+          <NuxtLink
+            :to="localePath('/policy')"
+            class="footer_link footer_link--info"
+          >
+            {{ $t("footer.policyLink") }}
           </NuxtLink>
         </div>
         <div class="menu_box">
-          <p>网站地图</p>
-          <NuxtLink to="/" class="footer_link">首页</NuxtLink>
-          <NuxtLink to="/about" class="footer_link">关于</NuxtLink>
-          <NuxtLink to="/solution" class="footer_link">解决方案</NuxtLink>
-          <NuxtLink to="/contact" class="footer_link">联系我们</NuxtLink>
+          <p>{{ $t("footer.sitemap") }}</p>
+          <NuxtLink :to="localePath('/')" class="footer_link">
+            {{ $t("nav.home") }}
+          </NuxtLink>
+          <NuxtLink :to="localePath('/about')" class="footer_link">
+            {{ $t("nav.about") }}
+          </NuxtLink>
+          <NuxtLink :to="localePath('/solution')" class="footer_link">
+            {{ $t("nav.solution") }}
+          </NuxtLink>
+          <NuxtLink :to="localePath('/contact')" class="footer_link">
+            {{ $t("nav.contact") }}
+          </NuxtLink>
         </div>
         <div class="contact_box">
-          <p>+86 185 2159 5792</p>
-          <p>联络时间在 09:00-AM - 06:00-PM</p>
-          <p class="address">中国 青岛 / 中国 杭州</p>
+          <p>{{ $t("footer.phone") }}</p>
+          <p>{{ $t("footer.hours") }}</p>
+          <p class="address">{{ $t("footer.address") }}</p>
         </div>
         <div class="app_box">
-          <p>移动端 App</p>
-          <p>我们的移动应用正在开发中，敬请期待。</p>
+          <p>{{ $t("footer.appTitle") }}</p>
+          <p>{{ $t("footer.appDesc") }}</p>
         </div>
       </div>
       <div class="copyright">
-        <span>© {{ year }} {{ site.name }}</span>
+        <span>© {{ year }} {{ $t("site.company") }}</span>
         <a
           v-if="site.icp"
           href="https://beian.miit.gov.cn/"
@@ -41,7 +52,7 @@
           target="_blank"
           rel="noopener"
         >
-          京公网安备 {{ site.police }} 号
+          {{ $t("footer.policeLabel", { code: site.police }) }}
         </a>
       </div>
     </div>
@@ -50,6 +61,7 @@
 
 <script setup lang="ts">
 const { site } = useAppConfig();
+const localePath = useLocalePath();
 const year = new Date().getFullYear();
 </script>
 <style lang="scss" scoped>

@@ -1,0 +1,143 @@
+{
+  "site": {
+    "title": "Mighty Elephant",
+    "description": "Mighty Elephant — technology solutions provider",
+    "brand": "Mighty Elephant",
+    "company": "Mighty Elephant Internet Technology (Qingdao) Co., Ltd."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "solution": "Solutions",
+    "contact": "Contact"
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "about": "About Us",
+    "solution": "Solutions",
+    "contact": "Contact Us",
+    "policy": "Privacy Policy"
+  },
+  "home": {
+    "carousel": {
+      "slide1": {
+        "title": "Technology Solutions Provider",
+        "desc": "Our team brings together technical specialists and business experts with extensive hands-on implementation experience. Combining industry knowledge with a full range of professional skills, we keep client service at the centre of everything we do — whatever the challenge, we commit our full effort to providing expert support and solutions."
+      },
+      "slide2": {
+        "title": "Seamless Apps and Web",
+        "desc": "Seamless integration between applications and the web has become a defining trend in modern information technology, and it matters to businesses and users alike. It improves the user experience while opening up new commercial opportunities for companies and brands. When applications and web pages work closely together, they deliver richer functionality and make information and services easier for users to reach."
+      },
+      "slide3": {
+        "title": "Web Data Hunters",
+        "desc": "Data can be extracted from web pages automatically, then processed and analysed — supporting web data mining, search engine optimisation and competitive intelligence. Big data processing, meanwhile, handles data that is vast, complex and heterogeneous, serving data analysis, data mining and machine learning."
+      }
+    },
+    "tech": {
+      "title": "Driven by Network Technology, Leading the Future",
+      "p1": "Network technology drives our digital lives. It has changed how we work and live, and its influence reaches deep into economic and social development.",
+      "p2": "Through continuous innovation and application of network technology, we can make production and services more efficient, more intelligent and more convenient — creating greater value and opportunity.",
+      "p3": "Cloud computing, big data and artificial intelligence, for example, raise the efficiency of production and services, reduce costs, and help refine business models and innovate products.",
+      "p4": "With the support of network technology, sectors such as education, healthcare, finance and transport can be digitalised and made intelligent, giving people a better experience of daily life and services."
+    },
+    "oneStop": {
+      "title": "One-Stop Solutions",
+      "p1": "Backed by the substantial infrastructure and industry strength of our parent group, Mighty Elephant has brought together technical specialists and business experts with rich implementation experience.",
+      "p2": "Combining industry experience with comprehensive professional skills and a client-centred approach, we help clients build advanced IT systems that rapidly strengthen their core competitiveness.",
+      "p3": "Our services span consulting, product research and development, information technology services, systems integration and business process outsourcing, across sectors including banking, securities, funds, insurance, telecommunications and government."
+    },
+    "solutions": {
+      "title": "Proven Solutions"
+    },
+    "slogan": "We remain committed to sensing the future through mobile internet technology..."
+  },
+  "about": {
+    "company": {
+      "title": "An Internet Information Services Company",
+      "p1": "Mighty Elephant is a company focused on the field of information technology.",
+      "p2": "Our work centres on the research, development and application of websites and applications, big data crawling and analysis, and reverse engineering."
+    },
+    "tech": {
+      "title": "Technology First, Service Above All",
+      "p1": "We have always operated on the principle of \"technology first, service above all\", continuously advancing technical innovation and progress.",
+      "p2": "This allows us to offer clients services and products of the highest quality, helping them digitalise their operations, make them intelligent, and strengthen their core competitiveness.",
+      "p3": "Our website and application development work spans a range of sectors, including e-commerce, finance and healthcare.",
+      "p4": "We provide a customised, end-to-end service from requirements analysis through to design and development, helping clients digitalise their operations and improve both business efficiency and user experience."
+    },
+    "team": {
+      "title": "An Effective, Professional Team",
+      "p1": "We have an outstanding technical team of experienced programmers, engineers and data researchers.",
+      "p2": "With solid technical foundations and extensive project experience, we stay client-centred, continuing to innovate and push forward in order to deliver products and services of the highest quality.",
+      "p3": "Looking ahead, we will carry on the fine traditions of our team, actively exploring the application and development of information technology, and making a greater contribution to our clients and to society."
+    }
+  },
+  "solution": {
+    "provider": {
+      "title": "Technology Solutions Provider",
+      "p1": "We provide technical specialists and business experts with extensive implementation experience, each holding deep professional knowledge and skill in their own field.",
+      "p2": "With our help, clients can build advanced IT systems and rapidly strengthen their core competitiveness, allowing them to stand out in a competitive market.",
+      "p3": "We are committed to building long-term partnerships and growing together with our clients. Whatever the challenge, we commit our full effort to providing expert support and solutions."
+    },
+    "webApp": {
+      "title": "Seamless Apps and Web",
+      "p1": "Seamless integration between applications and the web has become an important trend in modern information technology, opening up new commercial opportunities for companies and brands.",
+      "p2": "Using web-based payment within an app lets users complete a payment without leaving the application, saving them time and effort and improving satisfaction.",
+      "p3": "By connecting applications and web pages, companies and brands can also market and promote more effectively, raising both conversion and customer loyalty."
+    },
+    "dataHunter": {
+      "title": "Web Data Hunters",
+      "p1": "Reverse engineering is the practice of analysing and studying the behaviour of software and systems in order to understand their internal mechanisms — applied in areas such as malware research, software reverse engineering and cryptographic analysis.",
+      "p2": "Crawler technology extracts data from web pages automatically and then processes and analyses it, supporting web data mining, search engine optimisation and competitive intelligence.",
+      "p3": "Big data processing handles data that is vast, complex and heterogeneous, serving data analysis, data mining and machine learning."
+    }
+  },
+  "contact": {
+    "qingdao": {
+      "name": "Mighty Elephant Internet Technology (Qingdao) Co., Ltd.",
+      "phone": "Tel: +86 185 2159 5792",
+      "email": "Email: gracezou2829{'@'}gmail.com"
+    },
+    "hangzhou": {
+      "name": "Mighty Elephant Internet Technology — Hangzhou Office",
+      "phone": "Tel: +86 130 6797 9153",
+      "email": "Email: galiathusi1i{'@'}gmail.com"
+    }
+  },
+  "policy": {
+    "p1": "This privacy policy applies to activities directly related to your visit to the Mighty Elephant website. It does not apply to third-party websites linked from it. We strongly recommend reading the privacy policy of any third-party website before providing information to it. Mighty Elephant accepts no responsibility or liability for third-party websites.",
+    "p2": "Collection, use and transfer of your information",
+    "p3": "You may access most of the Mighty Elephant website without disclosing any identifying information (\"personal data\"). You may, however, choose to provide us with your personal information (\"personal information\" or \"information\") — for example, when you contact us, register for seminars, events or programmes offered through our website, or request information or services.",
+    "p4": "You may also voluntarily provide us with the personal data and/or information of others, such as your spouse, colleagues or friends. In such cases, we will assume that you hold their permission — unrestricted as to time, territory or permitted content — to provide their personal data and/or information to Mighty Elephant.",
+    "p5": "Mighty Elephant may collect, process, store, use, analyse and transfer such personal data and/or information on behalf of suppliers. In such cases, Mighty Elephant's responsibility is limited to requiring those suppliers to process or transfer your personal data and/or information in a manner consistent with this privacy policy. By providing personal information to us, you acknowledge and agree that your information may be processed or transferred by suppliers on behalf of Mighty Elephant.",
+    "disclaimerTitle": "Disclaimer:",
+    "disclaimer": "Mighty Elephant is not liable for any damage or injury arising from your access to, or inability to access, the Mighty Elephant website, or from reliance on any information provided on it. Mighty Elephant accepts no legal liability for any and all direct, indirect, incidental, consequential, punitive, special or other damages, lost opportunities, lost profits, or any other loss or damage. This limitation includes damage that may affect your computer equipment, and any virus.",
+    "lawTitle": "Governing law:",
+    "law": "Your access to and use of the Mighty Elephant website, and the content it contains, are governed by and construed in accordance with the laws of the People's Republic of China.",
+    "updateTitle": "Updates to this privacy policy:",
+    "update": "Mighty Elephant may update its privacy policy at any time. Where we make material changes, we will post a notice and the updated privacy policy on the company website."
+  },
+  "footer": {
+    "policyNote": "For further information or enquiries, please contact our service team in China.",
+    "policyLink": "Privacy Policy",
+    "sitemap": "Site Map",
+    "phone": "+86 185 2159 5792",
+    "hours": "Available 9:00 AM - 6:00 PM",
+    "address": "Qingdao, China / Hangzhou, China",
+    "appTitle": "Mobile App",
+    "appDesc": "Our mobile app is currently in development. Stay tuned.",
+    "icpLink": "MIIT ICP Filing",
+    "policeLabel": "Public Security Filing No. {code}"
+  },
+  "error": {
+    "notFoundTitle": "Page Not Found",
+    "notFoundDesc": "The page you are looking for may have been removed, renamed, or is temporarily unavailable.",
+    "genericTitle": "Something Went Wrong",
+    "genericDesc": "We ran into a problem. Please try again shortly, or get in touch with us directly.",
+    "backHome": "Back to Home"
+  },
+  "lang": {
+    "switchLabel": "Language",
+    "zh": "中文",
+    "en": "English"
+  }
+}

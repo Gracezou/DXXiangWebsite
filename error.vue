@@ -5,7 +5,7 @@
       <h1>{{ title }}</h1>
       <p class="desc">{{ description }}</p>
       <button class="home_btn" type="button" @click="handleBack">
-        返回首页
+        {{ $t("error.backHome") }}
       </button>
     </div>
   </div>
@@ -15,18 +15,20 @@
 import type { NuxtError } from "#app";
 
 const props = defineProps<{ error: NuxtError }>();
+const { t } = useI18n();
+const localePath = useLocalePath();
 
 const isNotFound = computed(() => props.error?.statusCode === 404);
 
-const title = computed(() => (isNotFound.value ? "页面不存在" : "页面出错了"));
-
-const description = computed(() =>
-  isNotFound.value
-    ? "您访问的页面可能已被移除、更名，或暂时无法访问。"
-    : "服务出现了一些问题，请稍后重试，或直接与我们联系。"
+const title = computed(() =>
+  isNotFound.value ? t("error.notFoundTitle") : t("error.genericTitle")
 );
 
-const handleBack = () => clearError({ redirect: "/" });
+const description = computed(() =>
+  isNotFound.value ? t("error.notFoundDesc") : t("error.genericDesc")
+);
+
+const handleBack = () => clearError({ redirect: localePath("/") });
 </script>
 
 <style lang="scss" scoped>

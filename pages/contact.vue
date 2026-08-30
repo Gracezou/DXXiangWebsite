@@ -1,24 +1,29 @@
 <template>
   <div class="contact_wrapper">
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>联系我们</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: localePath('/') }">
+        {{ $t("breadcrumb.home") }}
+      </el-breadcrumb-item>
+      <el-breadcrumb-item>{{ $t("breadcrumb.contact") }}</el-breadcrumb-item>
     </el-breadcrumb>
     <div class="content">
       <section class="company">
-        <p>大小象互联网科技（青岛）有限公司</p>
-        <p>电话: +86 185 2159 5792</p>
-        <p>Email: gracezou2829@gmail.com</p>
+        <p>{{ $t("contact.qingdao.name") }}</p>
+        <p>{{ $t("contact.qingdao.phone") }}</p>
+        <p>{{ $t("contact.qingdao.email") }}</p>
       </section>
 
       <section class="company">
-        <p>大小象互联网科技杭州办事处</p>
-        <p>电话: +86 130 6797 9153</p>
-        <p>Email: galiathusi1i@gmail.com</p>
+        <p>{{ $t("contact.hangzhou.name") }}</p>
+        <p>{{ $t("contact.hangzhou.phone") }}</p>
+        <p>{{ $t("contact.hangzhou.email") }}</p>
       </section>
     </div>
   </div>
 </template>
+<script setup lang="ts">
+const localePath = useLocalePath();
+</script>
 <style lang="scss" scoped>
 .contact_wrapper {
   .content {
