@@ -63,6 +63,9 @@
       </div>
     </section>
 
+    <!-- AI 赋能：贯穿三条业务线的能力层，深色横切板块 -->
+    <AiSection />
+
     <!-- 网络技术驱动：正文阅读区，浅色 -->
     <section class="section">
       <div class="container container--narrow">
@@ -123,6 +126,7 @@
 import Image from "~/components/Image.vue";
 import ServiceCard from "~/components/ServiceCard.vue";
 import CallToAction from "~/components/CallToAction.vue";
+import AiSection from "~/components/AiSection.vue";
 
 definePageMeta({ layout: "home" });
 

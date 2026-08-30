@@ -53,7 +53,8 @@
   --dx-color-brand: #003153; // 品牌主色（v1.0 沿用，不变）
   --dx-color-brand-mid: #0a5a8f; // 悬停、边框、次级元素
   --dx-color-accent: #00a8e8; // 强调：CTA、链接、图标、数据高亮
-  --dx-color-ai: #7c3aed; // AI 专用，仅限 AI 相关模块，不得扩散
+  --dx-color-ai: #7c3aed; // AI 专用装饰色块（非文字），仅限 AI 模块
+  --dx-color-ai-on-dark: #a78bfa; // 深色底上的 AI 文字（#7c3aed 对比度仅 3.23，不足 4.5）
 
   // 浅色区文字与背景
   --dx-color-heading: #12283d; // 章节标题

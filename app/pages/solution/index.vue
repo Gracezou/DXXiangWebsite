@@ -10,6 +10,7 @@
             <p>{{ $t("solution.provider.p1") }}</p>
             <p>{{ $t("solution.provider.p2") }}</p>
             <p>{{ $t("solution.provider.p3") }}</p>
+            <p class="ai_note">{{ $t("solution.provider.ai") }}</p>
           </div>
           <div class="split_media">
             <Image
@@ -33,6 +34,7 @@
             <p>{{ $t("solution.webApp.p1") }}</p>
             <p>{{ $t("solution.webApp.p2") }}</p>
             <p>{{ $t("solution.webApp.p3") }}</p>
+            <p class="ai_note">{{ $t("solution.webApp.ai") }}</p>
           </div>
           <div class="split_media">
             <Image
@@ -56,6 +58,7 @@
             <p>{{ $t("solution.dataHunter.p1") }}</p>
             <p>{{ $t("solution.dataHunter.p2") }}</p>
             <p>{{ $t("solution.dataHunter.p3") }}</p>
+            <p class="ai_note">{{ $t("solution.dataHunter.ai") }}</p>
           </div>
           <div class="split_media">
             <Image
@@ -106,4 +109,12 @@ useSeoMeta({
 
 <style lang="scss" scoped>
 @use "~/assets/scss/page" as *;
+
+// AI 赋能补充说明：以左侧色条与主色区分，标明这是该业务的 AI 维度
+.ai_note {
+  margin-top: var(--dx-space-md);
+  padding-left: var(--dx-space-sm);
+  border-left: 2px solid var(--dx-color-ai);
+  color: var(--dx-color-text-strong);
+}
 </style>
