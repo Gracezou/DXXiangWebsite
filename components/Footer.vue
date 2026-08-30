@@ -11,7 +11,7 @@
         <div class="menu_box">
           <p>网站地图</p>
           <el-link type="primary" href="/" :underline="false"> 首页 </el-link>
-          <el-link type="primary" href="/abort" :underline="false">
+          <el-link type="primary" href="/about" :underline="false">
             关于
           </el-link>
           <el-link type="primary" href="/solution" :underline="false">

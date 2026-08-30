@@ -1,5 +1,5 @@
 <template>
-  <div class="abort_wrapper">
+  <div class="about_wrapper">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>关于我们</el-breadcrumb-item>
@@ -58,7 +58,7 @@
 import Image from "~~/components/Image.vue";
 </script>
 <style lang="scss">
-.abort_wrapper {
+.about_wrapper {
   .content {
     height: 100%;
     > section:nth-of-type(even) {
