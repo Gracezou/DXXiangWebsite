@@ -69,8 +69,8 @@
       <h1>成功的解决方案</h1>
       <SolutionTab />
     </section>
-    <section class="logan part_content">
-      <Image src="/images/parallax_home.jpg" class="logan_image" />
+    <section class="slogan part_content">
+      <Image src="/images/parallax_home.jpg" class="slogan_image" />
       <p>我们将继续致力于用移动互联网技术感知未来...</p>
     </section>
   </div>
@@ -146,7 +146,7 @@ process.client &&
       margin-bottom: 54px;
     }
   }
-  .logan.part_content {
+  .slogan.part_content {
     position: relative;
     padding: 0;
     height: 320px;

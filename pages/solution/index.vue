@@ -18,7 +18,7 @@
           我们致力于建立长期的合作关系，与客户共同发展、共同成长。无论客户面临何种挑战，我们都将竭尽全力为其提供专业的支持和解决方案。
         </p>
         <Image
-          src="/images/technolog_solution_provider.jpg"
+          src="/images/technology_solution_provider.jpg"
           class="solution_image"
           width="800px"
         />
