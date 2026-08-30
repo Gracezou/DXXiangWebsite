@@ -26,7 +26,10 @@
           <p>联络时间在 09:00-AM - 06:00-PM</p>
           <p class="address">中国 青岛 / 中国 杭州</p>
         </div>
-        <Image src="/images/footer-qcode.png" height="100px" width="100px" />
+        <div class="app_box">
+          <p>移动端 App</p>
+          <p>我们的移动应用正在开发中，敬请期待。</p>
+        </div>
       </div>
       <div class="copyright">
         <span>© {{ year }} {{ site.name }}</span>
@@ -52,8 +55,6 @@
 </template>
 
 <script setup lang="ts">
-import Image from "~~/components/Image.vue";
-
 const { site } = useAppConfig();
 const year = new Date().getFullYear();
 </script>
@@ -90,6 +91,14 @@ const year = new Date().getFullYear();
     align-items: flex-start;
     line-height: 24px;
     p {
+      font-size: 16px;
+      font-weight: bold;
+      color: #31384d;
+    }
+  }
+  .app_box {
+    line-height: 24px;
+    p:first-child {
       font-size: 16px;
       font-weight: bold;
       color: #31384d;
