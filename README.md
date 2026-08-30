@@ -108,7 +108,12 @@ pnpm generate
 ./deploy/deploy.sh
 ```
 
-**完整的部署说明、Nginx 配置与缓存策略见 [deploy/README.md](deploy/README.md)。**
+**部署文档**：
+
+- [deploy/README.md](deploy/README.md) — Nginx 配置、缓存策略、脚本化部署
+- [docs/deploy-bt-panel.md](docs/deploy-bt-panel.md) — **宝塔面板逐步操作**（下载 Release 产物 → 建站 → 配置 → 验证）
+
+发布新版本时，在 GitHub 创建 Release 会自动触发构建并把产物附在 Release 上，下载解压即可部署。
 
 两点必须知道：
 
