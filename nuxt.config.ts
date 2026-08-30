@@ -23,7 +23,9 @@ export default defineNuxtConfig({
   app: {
     // title / description 由 i18n 提供（见 app.vue），完整 SEO 元信息在 B4-04 补齐
     head: {
-      meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
+      meta: [
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+      ],
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
   },

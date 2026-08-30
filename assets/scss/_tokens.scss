@@ -12,7 +12,8 @@
   // 会掉到浏览器默认字体（宋体/Times）。此处补齐跨平台栈。
   // 注意：不要引入 Google Fonts 等第三方字体 CDN——站点为静态托管、
   // 面向国内访问，CDN 不可用时没有回退能力。
-  --dx-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+  --dx-font-sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
     "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
 

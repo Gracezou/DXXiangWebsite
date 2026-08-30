@@ -5,7 +5,11 @@
       :alt="$t('alt.dataAnalyse')"
       sizes="sm:640px md:360px lg:420px xl:480px xxl:520px"
     />
-    <Image src="/images/gis.png" :alt="$t('alt.gis')" sizes="sm:640px md:360px lg:420px xl:480px xxl:520px" />
+    <Image
+      src="/images/gis.png"
+      :alt="$t('alt.gis')"
+      sizes="sm:640px md:360px lg:420px xl:480px xxl:520px"
+    />
     <Image
       src="/images/web_solution.png"
       :alt="$t('alt.webSolution')"
