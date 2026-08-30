@@ -108,7 +108,7 @@ pnpm generate
 | 项 | 配置 |
 | --- | --- |
 | 旧链接 301 | `/abort` → `/about`（v1.0 的路由拼写错误，v2.0 已更名） |
-| 404 页面 | 指向产物中的 `404.html` |
+| 404 页面 | 指向产物中的 `404.html`（可选：项目内已有 catch-all 路由兜底） |
 
 Nginx 示例：
 
@@ -120,12 +120,15 @@ location = /abort {
 error_page 404 /404.html;
 ```
 
+> **404 的兜底**：项目内有 `pages/[...slug].vue` catch-all 路由。无论托管层返回 `404.html` 还是 `200.html`（SPA fallback），未知路径都能渲染出统一的 404 界面，不会出现空白页或托管商的默认错误页。
+
 > `nuxt.config.ts` 中的 `routeRules` 重定向只在 `pnpm dev` / `pnpm preview` 下生效。静态产物中它会被编译成一个 `<meta http-equiv="refresh">` 页面，那**不是** 301，对 SEO 不传递权重。托管层配置好后该文件不会被读到。
 
 ## 上线前检查清单
 
 - [ ] **填入 ICP 备案号**：`app.config.ts` 的 `site.icp` 字段。留空时页脚不渲染备案行，填入即生效，无需改组件代码。
 - [ ] **开放搜索引擎抓取**：`nuxt.config.ts` 的 `robots` 配置目前是 `Disallow: /`（备案未通过前不应被收录），上线时改为允许。
-- [ ] **英文文案人工校对**：`i18n/locales/en.json` 为机器初翻，待确认项见 `i18n/locales/README.md`。**英文隐私政策属对外法律文本，建议法务确认后再上线。**
-- [ ] **托管层配置** `/abort` 的 301 与 404 指向（见上）。
-- [ ] **跑一次 Lighthouse**，确认 Performance ≥ 85、Accessibility ≥ 90。
+- [ ] **托管层配置** `/abort` 的 301（见上）。404 已由项目内的 catch-all 路由兜底，托管层配置为可选增强。
+- [ ] **跑一次 Lighthouse**，确认 Performance ≥ 85、Accessibility ≥ 90（计划在 v2.1 全部改造完成后执行）。
+
+> 英文文案已由项目方确认无需人工校对，`i18n/locales/README.md` 中的待确认项保留作为参考记录。
