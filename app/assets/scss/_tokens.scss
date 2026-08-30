@@ -100,7 +100,9 @@ html[lang="zh-CN"] {
 }
 
 html[lang="en"] {
-  --dx-measure-display: 13ch;
+  // 13ch 会把 "Technology that lands in real operations" 压成三行，
+  // 英文标题需要更宽的行长
+  --dx-measure-display: 20ch;
   --dx-measure-body: 46ch;
 }
 
