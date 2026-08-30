@@ -4,22 +4,28 @@
       src="/images/data_analyse.webp"
       :alt="$t('alt.dataAnalyse')"
       sizes="sm:640px md:360px lg:420px xl:480px xxl:520px"
+      width="843"
+      height="843"
     />
     <Image
       src="/images/gis.png"
       :alt="$t('alt.gis')"
       sizes="sm:640px md:360px lg:420px xl:480px xxl:520px"
+      width="843"
+      height="843"
     />
     <Image
       src="/images/web_solution.png"
       :alt="$t('alt.webSolution')"
       sizes="sm:640px md:360px lg:420px xl:480px xxl:520px"
+      width="1024"
+      height="1024"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import Image from "~~/components/Image.vue";
+import Image from "~/components/Image.vue";
 </script>
 
 <style lang="scss" scoped>

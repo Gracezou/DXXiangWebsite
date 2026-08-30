@@ -9,6 +9,8 @@
           fetchpriority="high"
           sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
           class="carousel_image"
+          width="1280"
+          height="920"
         />
         <div class="title_wrapper">
           <h2>{{ $t("home.carousel.slide1.title") }}</h2>
@@ -21,6 +23,8 @@
           :alt="$t('alt.carousel2')"
           sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
           class="carousel_image"
+          width="1280"
+          height="920"
         />
         <div class="title_wrapper">
           <h2>{{ $t("home.carousel.slide2.title") }}</h2>
@@ -33,6 +37,8 @@
           :alt="$t('alt.carousel3')"
           sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
           class="carousel_image"
+          width="1280"
+          height="920"
         />
         <div class="title_wrapper">
           <h2>{{ $t("home.carousel.slide3.title") }}</h2>
@@ -59,6 +65,8 @@
         :alt="$t('alt.oneStop')"
         class="content_image"
         sizes="sm:640px md:800px lg:800px xl:800px xxl:800px"
+        width="800"
+        height="200"
       />
     </section>
 
@@ -73,6 +81,8 @@
         :alt="$t('alt.slogan')"
         class="slogan_image"
         sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
+        width="1920"
+        height="814"
       />
       <p>{{ $t("home.slogan") }}</p>
     </section>
@@ -82,9 +92,9 @@
 </template>
 
 <script setup lang="ts">
-import Image from "~~/components/Image.vue";
-import SolutionTab from "~~/components/Solution.vue";
-import CallToAction from "~~/components/CallToAction.vue";
+import Image from "~/components/Image.vue";
+import SolutionTab from "~/components/Solution.vue";
+import CallToAction from "~/components/CallToAction.vue";
 
 definePageMeta({ layout: "home" });
 

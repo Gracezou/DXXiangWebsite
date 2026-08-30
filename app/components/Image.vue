@@ -54,6 +54,14 @@ const failed = ref(false);
   max-width: 100%;
   height: auto;
 }
+
+/*
+ * 图片未加载完成时必须有占位高度，否则渲染高度为 0，
+ * 浏览器会判定元素不可见而不触发 lazy 加载 —— 形成
+ * 「高度 0 → 不加载 → 高度仍为 0」的死循环。
+ * 同时这也是消除 CLS 的必要条件。
+ * 各调用处通过 width/height 属性提供真实宽高比。
+ */
 .image_slot {
   display: flex;
   justify-content: center;

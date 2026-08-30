@@ -13,6 +13,8 @@
           :alt="$t('alt.solutionProvider')"
           class="solution_image"
           sizes="sm:640px md:800px lg:800px xl:800px xxl:800px"
+          width="800"
+          height="200"
         />
       </section>
 
@@ -26,6 +28,8 @@
           :alt="$t('alt.webApp')"
           class="solution_image"
           sizes="sm:640px md:800px lg:800px xl:800px xxl:800px"
+          width="800"
+          height="340"
         />
       </section>
 
@@ -39,6 +43,8 @@
           :alt="$t('alt.dataAnalyse')"
           class="solution_image"
           sizes="sm:640px md:800px lg:800px xl:800px xxl:800px"
+          width="843"
+          height="843"
         />
       </section>
       <Divider />
@@ -49,11 +55,11 @@
 </template>
 
 <script setup lang="ts">
-import Image from "~~/components/Image.vue";
-import SolutionTab from "~~/components/Solution.vue";
-import Breadcrumb from "~~/components/Breadcrumb.vue";
-import Divider from "~~/components/Divider.vue";
-import CallToAction from "~~/components/CallToAction.vue";
+import Image from "~/components/Image.vue";
+import SolutionTab from "~/components/Solution.vue";
+import Breadcrumb from "~/components/Breadcrumb.vue";
+import Divider from "~/components/Divider.vue";
+import CallToAction from "~/components/CallToAction.vue";
 
 const { t } = useI18n();
 const ogImage = "https://www.daxiaoxiang.com/images/og-cover.jpg";

@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import Breadcrumb from "~~/components/Breadcrumb.vue";
+import Breadcrumb from "~/components/Breadcrumb.vue";
 
 const { t } = useI18n();
 const ogImage = "https://www.daxiaoxiang.com/images/og-cover.jpg";

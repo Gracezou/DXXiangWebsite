@@ -10,6 +10,8 @@
           :alt="$t('alt.company')"
           class="company_image"
           sizes="sm:640px md:960px lg:960px xl:960px xxl:960px"
+          width="960"
+          height="400"
         />
         <p>{{ $t("about.company.p1") }}</p>
         <p>{{ $t("about.company.p2") }}</p>
@@ -21,6 +23,8 @@
           :alt="$t('alt.techFirst')"
           class="tech_image"
           sizes="sm:640px md:800px lg:800px xl:800px xxl:800px"
+          width="800"
+          height="200"
         />
         <p>{{ $t("about.tech.p1") }}</p>
         <p>{{ $t("about.tech.p2") }}</p>
@@ -34,6 +38,8 @@
           :alt="$t('alt.team')"
           class="tech_image"
           sizes="sm:640px md:800px lg:800px xl:800px xxl:800px"
+          width="800"
+          height="200"
         />
         <p>{{ $t("about.team.p1") }}</p>
         <p>{{ $t("about.team.p2") }}</p>
@@ -45,10 +51,10 @@
 </template>
 
 <script setup lang="ts">
-import Image from "~~/components/Image.vue";
-import Breadcrumb from "~~/components/Breadcrumb.vue";
-import Divider from "~~/components/Divider.vue";
-import CallToAction from "~~/components/CallToAction.vue";
+import Image from "~/components/Image.vue";
+import Breadcrumb from "~/components/Breadcrumb.vue";
+import Divider from "~/components/Divider.vue";
+import CallToAction from "~/components/CallToAction.vue";
 
 const { t } = useI18n();
 const ogImage = "https://www.daxiaoxiang.com/images/og-cover.jpg";

@@ -67,8 +67,6 @@ export default defineNuxtConfig({
 
   // build modules
   modules: [
-    "@vueuse/nuxt",
-    "@unocss/nuxt",
     "@element-plus/nuxt",
     "@nuxtjs/i18n",
     "@nuxt/image",
@@ -118,17 +116,12 @@ export default defineNuxtConfig({
     strategy: "prefix_except_default",
     // hreflang 与 canonical 需要绝对 URL，故必须配置 baseUrl
     baseUrl: "https://www.daxiaoxiang.com",
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: "i18n_locale",
-      redirectOn: "root",
-      alwaysRedirect: false,
-    },
-  },
-
-  // vueuse
-  vueuse: {
-    ssrHandlers: true,
+    // 静态站点必须关闭浏览器语言检测。
+    // 预渲染的 HTML 对所有访客是同一份，若由 cookie 在客户端切换语言，
+    // 会与服务端渲染的内容不一致，产生 hydration mismatch
+    // （Nuxt 4 + i18n v10 下会实际触发，Nuxt 3 + v9 下被静默吞掉）。
+    // 语言完全由 URL 决定：/ 为中文，/en 为英文，切换通过 Header 的链接。
+    detectBrowserLanguage: false,
   },
 
   vite: {
