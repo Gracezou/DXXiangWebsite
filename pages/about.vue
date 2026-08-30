@@ -1,19 +1,15 @@
 <template>
   <div class="about_wrapper">
-    <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: localePath('/') }">
-        {{ $t("breadcrumb.home") }}
-      </el-breadcrumb-item>
-      <el-breadcrumb-item>{{ $t("breadcrumb.about") }}</el-breadcrumb-item>
-    </el-breadcrumb>
+    <Breadcrumb :current="$t('breadcrumb.about')" />
     <div class="content">
-      <el-divider />
+      <Divider />
       <section class="part_content">
         <h1>{{ $t("about.company.title") }}</h1>
         <Image
           src="/images/internet_company.jpg"
+          :alt="$t('alt.company')"
           class="company_image"
-          width="960px"
+          sizes="sm:640px md:960px lg:960px xl:960px xxl:960px"
         />
         <p>{{ $t("about.company.p1") }}</p>
         <p>{{ $t("about.company.p2") }}</p>
@@ -22,8 +18,9 @@
         <h1>{{ $t("about.tech.title") }}</h1>
         <Image
           src="/images/technology_first.jpg"
+          :alt="$t('alt.techFirst')"
           class="tech_image"
-          width="800px"
+          sizes="sm:640px md:800px lg:800px xl:800px xxl:800px"
         />
         <p>{{ $t("about.tech.p1") }}</p>
         <p>{{ $t("about.tech.p2") }}</p>
@@ -32,7 +29,12 @@
       </section>
       <section class="part_content">
         <h1>{{ $t("about.team.title") }}</h1>
-        <Image src="/images/team.jpg" class="tech_image" width="800px" />
+        <Image
+          src="/images/team.jpg"
+          :alt="$t('alt.team')"
+          class="tech_image"
+          sizes="sm:640px md:800px lg:800px xl:800px xxl:800px"
+        />
         <p>{{ $t("about.team.p1") }}</p>
         <p>{{ $t("about.team.p2") }}</p>
         <p>{{ $t("about.team.p3") }}</p>
@@ -40,50 +42,83 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 import Image from "~~/components/Image.vue";
+import Breadcrumb from "~~/components/Breadcrumb.vue";
+import Divider from "~~/components/Divider.vue";
 
-const localePath = useLocalePath();
+const { t } = useI18n();
+const ogImage = "https://www.daxiaoxiang.com/images/og-cover.jpg";
+
+useSeoMeta({
+  title: () => t("seo.about.title"),
+  description: () => t("seo.about.description"),
+  ogTitle: () => t("seo.about.title"),
+  ogDescription: () => t("seo.about.description"),
+  ogType: "website",
+  ogImage,
+  twitterCard: "summary_large_image",
+  twitterTitle: () => t("seo.about.title"),
+  twitterDescription: () => t("seo.about.description"),
+  twitterImage: ogImage,
+});
 </script>
-<style lang="scss">
+
+<style lang="scss" scoped>
 .about_wrapper {
-  .content {
-    height: 100%;
-    > section:nth-of-type(even) {
-      background-color: #f2f5f8;
-    }
+  .content > section:nth-of-type(even) {
+    background-color: var(--dx-color-surface);
   }
+
   .part_content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 0;
+    padding: var(--dx-space-2xl) var(--dx-space-md);
+    color: var(--dx-color-text);
+    font-size: var(--dx-text-body);
+    line-height: var(--dx-leading-relaxed);
+
+    @include mobile {
+      padding: var(--dx-space-lg) var(--dx-space-md);
+    }
 
     h1 {
       margin: 0;
-      padding-top: 60px;
-      padding-bottom: 50px;
-      font-size: 48px;
+      padding-top: var(--dx-space-2xl);
+      padding-bottom: var(--dx-space-xl);
+      font-size: var(--dx-text-h1);
       font-weight: 300;
+      line-height: var(--dx-leading-tight);
+      color: var(--dx-color-heading);
+      text-align: center;
+
+      @include mobile {
+        padding-top: var(--dx-space-lg);
+        padding-bottom: var(--dx-space-md);
+      }
+    }
+
+    p {
+      max-width: 900px;
+      margin: 0 0 var(--dx-space-xs);
+      text-align: center;
     }
   }
+
   .company_image {
-    width: 960px;
-    aspect-ratio: auto 960 / 400;
-    margin-bottom: 20px;
-    border-radius: 10px;
+    width: 100%;
+    max-width: 960px;
+    margin-bottom: var(--dx-space-md);
+    border-radius: var(--dx-radius-md);
   }
+
   .tech_image {
-    width: 800px;
-    aspect-ratio: auto 800 / 220;
-    margin-bottom: 20px;
-    border-radius: 10px;
-  }
-  .team_image_box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: var(--dx-space-md);
+    border-radius: var(--dx-radius-md);
   }
 }
 </style>

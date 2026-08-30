@@ -1,5 +1,5 @@
 <template>
-  <div class="footer_wrapper">
+  <footer class="footer_wrapper">
     <div class="content">
       <div class="content_main">
         <div class="policy_box">
@@ -12,7 +12,7 @@
           </NuxtLink>
         </div>
         <div class="menu_box">
-          <p>{{ $t("footer.sitemap") }}</p>
+          <p class="box_title">{{ $t("footer.sitemap") }}</p>
           <NuxtLink :to="localePath('/')" class="footer_link">
             {{ $t("nav.home") }}
           </NuxtLink>
@@ -27,12 +27,12 @@
           </NuxtLink>
         </div>
         <div class="contact_box">
-          <p>{{ $t("footer.phone") }}</p>
-          <p>{{ $t("footer.hours") }}</p>
+          <p class="phone">{{ $t("footer.phone") }}</p>
+          <p class="hours">{{ $t("footer.hours") }}</p>
           <p class="address">{{ $t("footer.address") }}</p>
         </div>
         <div class="app_box">
-          <p>{{ $t("footer.appTitle") }}</p>
+          <p class="box_title">{{ $t("footer.appTitle") }}</p>
           <p>{{ $t("footer.appDesc") }}</p>
         </div>
       </div>
@@ -56,7 +56,7 @@
         </a>
       </div>
     </div>
-  </div>
+  </footer>
 </template>
 
 <script setup lang="ts">
@@ -64,99 +64,122 @@ const { site } = useAppConfig();
 const localePath = useLocalePath();
 const year = new Date().getFullYear();
 </script>
+
 <style lang="scss" scoped>
 .footer_wrapper {
-  background-color: #003153;
-  padding-top: 90px;
-  height: 100%;
-  box-sizing: border-box;
-  color: #848e97;
-  font-size: 14px;
+  padding-top: var(--dx-space-3xl);
+  background-color: var(--dx-color-brand);
+  color: var(--dx-color-text);
+  font-size: var(--dx-text-sm);
+
+  @include mobile {
+    padding-top: var(--dx-space-xl);
+  }
+
   .content {
-    height: 100%;
-    box-sizing: border-box;
-    background-color: #f2f5f8;
-    display: flex;
-    flex-direction: column;
-    padding: 60px 50px 40px;
+    background-color: var(--dx-color-surface);
+    padding: var(--dx-space-2xl) var(--dx-space-xl) var(--dx-space-lg);
+
+    @include mobile {
+      padding: var(--dx-space-lg) var(--dx-space-md) var(--dx-space-md);
+    }
+
     p {
       margin-top: 0;
     }
   }
-  .content_main {
-    display: flex;
-  }
-  .policy_box {
-    width: 25%;
-  }
-  .menu_box {
-    margin: 0 100px;
-    display: flex;
+}
+
+.content_main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dx-space-2xl);
+
+  @include mobile {
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    line-height: 24px;
-    p {
-      font-size: 16px;
-      font-weight: bold;
-      color: #31384d;
-    }
+    gap: var(--dx-space-lg);
   }
-  // 替代 el-link：保持原有配色与字重，改用 NuxtLink 以走客户端路由
-  .footer_link {
-    display: inline-flex;
-    align-items: center;
-    color: var(--el-color-primary);
-    font-size: 14px;
-    font-weight: 500;
+}
+
+.policy_box {
+  flex: 1 1 240px;
+  max-width: 320px;
+
+  @include mobile {
+    max-width: none;
+  }
+}
+
+.menu_box {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: var(--dx-leading-relaxed);
+}
+
+.contact_box {
+  flex: 1 1 240px;
+
+  .phone {
+    font-size: var(--dx-text-h3);
+    font-weight: bold;
+    color: var(--dx-color-text-strong);
+    margin-bottom: var(--dx-space-2xs);
+  }
+  .hours {
+    margin-bottom: var(--dx-space-md);
+  }
+  .address {
+    font-size: var(--dx-text-body);
+    font-weight: bold;
+    color: var(--dx-color-text-strong);
+  }
+}
+
+.app_box {
+  flex: 1 1 200px;
+  line-height: var(--dx-leading-relaxed);
+}
+
+.box_title {
+  font-size: var(--dx-text-body);
+  font-weight: bold;
+  color: var(--dx-color-text-strong);
+}
+
+.footer_link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--dx-color-brand);
+  font-size: var(--dx-text-sm);
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &--info {
+    color: var(--dx-color-text);
+  }
+}
+
+.copyright {
+  margin-top: var(--dx-space-lg);
+  padding-top: var(--dx-space-md);
+  border-top: 1px solid var(--dx-color-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dx-space-2xs) var(--dx-space-md);
+  font-size: var(--dx-text-xs);
+
+  a {
+    color: inherit;
     text-decoration: none;
+
     &:hover {
-      opacity: 0.8;
-    }
-    &--info {
-      color: var(--el-color-info);
-    }
-  }
-  .app_box {
-    line-height: 24px;
-    p:first-child {
-      font-size: 16px;
-      font-weight: bold;
-      color: #31384d;
-    }
-  }
-  .contact_box {
-    margin-right: 30px;
-    p:first-child {
-      font-size: 30px;
-      font-weight: bold;
-      color: #31384d;
-      margin-bottom: 8px;
-    }
-    p:nth-child(2) {
-      margin-bottom: 8px;
-      margin-bottom: 30px;
-    }
-    .address {
-      font-size: 16px;
-      font-weight: bold;
-      color: #31384d;
-    }
-  }
-  .copyright {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #dfe5ec;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 20px;
-    font-size: 13px;
-    a {
-      color: inherit;
-      text-decoration: none;
-      &:hover {
-        color: #31384d;
-      }
+      color: var(--dx-color-text-strong);
     }
   }
 }

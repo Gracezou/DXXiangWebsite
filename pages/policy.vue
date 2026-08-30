@@ -1,11 +1,6 @@
 <template>
   <div class="policy_wrapper">
-    <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: localePath('/') }">
-        {{ $t("breadcrumb.home") }}
-      </el-breadcrumb-item>
-      <el-breadcrumb-item>{{ $t("breadcrumb.policy") }}</el-breadcrumb-item>
-    </el-breadcrumb>
+    <Breadcrumb :current="$t('breadcrumb.policy')" />
     <div class="content">
       <p>{{ $t("policy.p1") }}</p>
       <p>{{ $t("policy.p2") }}</p>
@@ -21,20 +16,43 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
-const localePath = useLocalePath();
+import Breadcrumb from "~~/components/Breadcrumb.vue";
+
+const { t } = useI18n();
+const ogImage = "https://www.daxiaoxiang.com/images/og-cover.jpg";
+
+useSeoMeta({
+  title: () => t("seo.policy.title"),
+  description: () => t("seo.policy.description"),
+  ogTitle: () => t("seo.policy.title"),
+  ogDescription: () => t("seo.policy.description"),
+  ogType: "website",
+  ogImage,
+  twitterCard: "summary_large_image",
+  twitterTitle: () => t("seo.policy.title"),
+  twitterDescription: () => t("seo.policy.description"),
+  twitterImage: ogImage,
+});
 </script>
+
 <style lang="scss" scoped>
 .policy_wrapper {
-  p {
-    font-size: 16px;
-    line-height: 26px;
-    color: #848e97;
-    word-wrap: normal;
-  }
   .content {
-    padding: 20px 50px 60px;
-    background-color: #f2f5f8;
+    padding: var(--dx-space-md) var(--dx-space-xl) var(--dx-space-2xl);
+    background-color: var(--dx-color-surface);
+
+    @include mobile {
+      padding: var(--dx-space-md) var(--dx-space-md) var(--dx-space-lg);
+    }
+  }
+
+  p {
+    max-width: 1000px;
+    font-size: var(--dx-text-body);
+    line-height: var(--dx-leading-relaxed);
+    color: var(--dx-color-text);
   }
 }
 </style>

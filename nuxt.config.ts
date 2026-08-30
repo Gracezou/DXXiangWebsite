@@ -1,4 +1,24 @@
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
+
+// 站点页面路径（不含语言前缀）
+const PAGE_PATHS = ["/", "/about", "/solution", "/contact", "/policy"];
+
+// 显式构造 sitemap 条目。静态生成时 sitemap 的路由自动发现与 autoI18n
+// 均不生效（会产出空的 urlset），因此在此手动展开中英两套 URL 与 hreflang。
+const SITEMAP_URLS = PAGE_PATHS.flatMap((path) => {
+  const zh = path;
+  const en = path === "/" ? "/en" : `/en${path}`;
+  const alternatives = [
+    { hreflang: "zh-CN", href: zh },
+    { hreflang: "en", href: en },
+    { hreflang: "x-default", href: zh },
+  ];
+  return [
+    { loc: zh, alternatives },
+    { loc: en, alternatives },
+  ];
+});
+
 export default defineNuxtConfig({
   app: {
     // title / description 由 i18n 提供（见 app.vue），完整 SEO 元信息在 B4-04 补齐
@@ -49,7 +69,41 @@ export default defineNuxtConfig({
     "@unocss/nuxt",
     "@element-plus/nuxt",
     "@nuxtjs/i18n",
+    "@nuxt/image",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
   ],
+
+  site: {
+    url: "https://www.daxiaoxiang.com",
+    name: "Mighty Elephant 大小象",
+  },
+
+  // ⚠️ 备案通过、正式上线前，站点不应被搜索引擎收录。
+  // 上线时把 disallow 改为 allow（见 docs/v2.0-upgrade-plan.md 上线前必查项）。
+  robots: {
+    groups: [{ userAgent: ["*"], disallow: ["/"] }],
+  },
+
+  // 备案前站点整体禁止抓取，sitemap 仍然生成以便上线时即刻可用
+  sitemap: {
+    autoI18n: false,
+    urls: SITEMAP_URLS,
+    exclude: ["/abort", "/en/abort", "/200.html", "/404.html"],
+  },
+
+  // 图片自动转 WebP 并生成响应式 srcset
+  image: {
+    format: ["webp"],
+    quality: 80,
+    screens: {
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+    },
+  },
 
   // 中英双语。中文为默认语言且不带前缀，英文为 /en/*。
   i18n: {
@@ -78,7 +132,9 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@use "@/assets/scss/global.scss" as element;`,
+          // global.scss 提供 Element Plus 主题变量；_mixins.scss 提供响应式断点，
+          // 以 as * 注入使各组件可直接 @include mobile / tablet-down
+          additionalData: `@use "@/assets/scss/global.scss" as element; @use "@/assets/scss/mixins" as *;`,
         },
       },
     },

@@ -34,43 +34,50 @@ const handleBack = () => clearError({ redirect: localePath("/") });
 <style lang="scss" scoped>
 .error_wrapper {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f2f5f8;
-  font-family: "Microsoft YaHei";
+  background-color: var(--dx-color-surface);
+  font-family: var(--dx-font-sans);
 }
+
 .error_content {
   text-align: center;
-  padding: 0 20px;
+  padding: 0 var(--dx-space-md);
+
   .status_code {
     margin: 0;
-    font-size: 96px;
+    font-size: var(--dx-text-hero);
     font-weight: bold;
     line-height: 1;
-    color: #003153;
+    color: var(--dx-color-brand);
   }
+
   h1 {
-    margin: 24px 0 14px;
-    font-size: 36px;
+    margin: var(--dx-space-md) 0 var(--dx-space-sm);
+    font-size: var(--dx-text-h2);
     font-weight: 600;
-    color: #34495e;
+    color: var(--dx-color-heading);
   }
+
   .desc {
-    margin: 0 0 40px;
-    font-size: 16px;
-    line-height: 26px;
-    color: #848e97;
+    margin: 0 0 var(--dx-space-xl);
+    font-size: var(--dx-text-body);
+    line-height: var(--dx-leading-relaxed);
+    color: var(--dx-color-text);
   }
+
   .home_btn {
-    padding: 12px 36px;
-    font-size: 16px;
-    color: #e5ddd7;
-    background-color: #003153;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    padding: var(--dx-space-xs) var(--dx-space-lg);
+    font-size: var(--dx-text-body);
     font-family: inherit;
+    color: var(--dx-color-on-brand);
+    background-color: var(--dx-color-brand);
+    border: none;
+    border-radius: var(--dx-radius-sm);
+    cursor: pointer;
+
     &:hover {
       opacity: 0.9;
     }

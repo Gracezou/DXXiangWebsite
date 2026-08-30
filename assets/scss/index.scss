@@ -1,17 +1,35 @@
+@use "./tokens";
+
+// 现代盒模型：width 含 padding 与 border。
+// v1.0 未设置，导致 width:100% + padding 的元素撑出横向滚动条。
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body,
 #app {
   margin: 0;
   padding: 0;
-  font-family: "Microsoft YaHei";
+  font-family: var(--dx-font-sans);
+}
+
+body {
+  // v1.0 未声明底色，浏览器处于暗色模式时页面底色会渲染成黑色
+  background-color: var(--dx-color-bg);
+  color: var(--dx-color-text);
+  font-size: var(--dx-text-body);
+  line-height: var(--dx-leading-normal);
 }
 
 .el-header {
   --el-menu-item-height: 94px;
-  --el-menu-item-font-size: 18px;
+  --el-menu-item-font-size: var(--dx-text-lg);
 }
 
 .el-breadcrumb {
-  --el-text-color-primary: #003153;
-  padding: 50px 55px 40px;
+  --el-text-color-primary: var(--dx-color-brand);
+  padding: var(--dx-space-xl) var(--dx-space-xl) var(--dx-space-lg);
 }

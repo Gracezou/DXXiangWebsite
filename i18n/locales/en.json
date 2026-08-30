@@ -139,5 +139,42 @@
     "switchLabel": "Language",
     "zh": "中文",
     "en": "English"
+  },
+  "alt": {
+    "carousel1": "Abstract visualisation of data networks and global connectivity",
+    "carousel2": "Close-up of a circuit board and processor chip",
+    "carousel3": "Data analytics dashboard with hands at work",
+    "oneStop": "Team collaborating on a project plan",
+    "slogan": "City at night, evoking mobile internet connectivity",
+    "company": "Interior view of the company office",
+    "techFirst": "An engineer developing software at a monitor",
+    "team": "Members of the technical team",
+    "solutionProvider": "Delivery of a technology solution",
+    "webApp": "Mobile application and web interface working together",
+    "dataAnalyse": "Big data analytics visualisation",
+    "gis": "Geographic information system map visualisation",
+    "webSolution": "Website solution interface"
+  },
+  "seo": {
+    "home": {
+      "title": "Technology Solutions Provider",
+      "description": "Mighty Elephant provides website and application development, big data crawling and analysis, and reverse engineering — helping clients build advanced IT systems and strengthen their core competitiveness."
+    },
+    "about": {
+      "title": "About Us",
+      "description": "Mighty Elephant is a company focused on information technology, centred on the development of websites and applications, big data crawling and analysis, and reverse engineering."
+    },
+    "solution": {
+      "title": "Solutions",
+      "description": "Technology solutions provider, seamless apps and web, and web data hunters — the three business areas and service capabilities of Mighty Elephant."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Contact details for Mighty Elephant Internet Technology (Qingdao) Co., Ltd. and the Hangzhou office. Available 9:00 AM - 6:00 PM."
+    },
+    "policy": {
+      "title": "Privacy Policy",
+      "description": "Privacy policy for the Mighty Elephant website: collection, use and transfer of information, disclaimer, governing law, and policy updates."
+    }
   }
 }
