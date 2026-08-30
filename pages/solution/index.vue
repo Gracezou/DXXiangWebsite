@@ -53,7 +53,11 @@
         <p>
           而大数据处理则是指处理海量、复杂、异构数据的技术，可以用于数据分析、数据挖掘、机器学习等领域
         </p>
-        <Image class="solution_image" width="800px" />
+        <Image
+          src="/images/data_analyse.webp"
+          class="solution_image"
+          width="800px"
+        />
       </section>
       <el-divider />
       <SolutionTab />
