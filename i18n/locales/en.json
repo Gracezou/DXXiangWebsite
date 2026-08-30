@@ -49,7 +49,9 @@
     "solutions": {
       "title": "Proven Solutions"
     },
-    "slogan": "We remain committed to sensing the future through mobile internet technology..."
+    "slogan": "We remain committed to sensing the future through mobile internet technology...",
+    "servicesTitle": "What We Do",
+    "servicesIntro": "Three business lines covering the full path from systems delivery to data acquisition and analysis."
   },
   "about": {
     "company": {
@@ -92,15 +94,19 @@
     }
   },
   "contact": {
+    "labels": {
+      "phone": "Tel",
+      "email": "Email"
+    },
     "qingdao": {
       "name": "Mighty Elephant Internet Technology (Qingdao) Co., Ltd.",
-      "phone": "Tel: +86 185 2159 5792",
-      "email": "Email: gracezou2829{'@'}gmail.com"
+      "phoneValue": "+86 185 2159 5792",
+      "emailValue": "gracezou2829{'@'}gmail.com"
     },
     "hangzhou": {
       "name": "Mighty Elephant Internet Technology — Hangzhou Office",
-      "phone": "Tel: +86 130 6797 9153",
-      "email": "Email: galiathusi1i{'@'}gmail.com"
+      "phoneValue": "+86 130 6797 9153",
+      "emailValue": "galiathusi1i{'@'}gmail.com"
     }
   },
   "policy": {
@@ -180,5 +186,11 @@
   "cta": {
     "title": "Need a technology solution built for your business?",
     "button": "Get in Touch"
+  },
+  "hero": {
+    "title": "Technology Solutions Provider",
+    "subtitle": "Combining industry experience with comprehensive professional skills to help clients build advanced IT systems and strengthen their core competitiveness.",
+    "primaryCta": "View Solutions",
+    "secondaryCta": "Get in Touch"
   }
 }

@@ -69,7 +69,7 @@ useHead(() => ({
   }
 
   a {
-    color: var(--dx-color-brand);
+    color: var(--dx-color-brand-mid);
     text-decoration: none;
 
     &:hover {

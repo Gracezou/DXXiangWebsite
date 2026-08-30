@@ -49,7 +49,9 @@
     "solutions": {
       "title": "成功的解决方案"
     },
-    "slogan": "我们将继续致力于用移动互联网技术感知未来..."
+    "slogan": "我们将继续致力于用移动互联网技术感知未来...",
+    "servicesTitle": "我们做什么",
+    "servicesIntro": "三条业务线，覆盖从系统建设到数据获取与分析的完整链路。"
   },
   "about": {
     "company": {
@@ -92,15 +94,19 @@
     }
   },
   "contact": {
+    "labels": {
+      "phone": "电话",
+      "email": "邮箱"
+    },
     "qingdao": {
       "name": "大小象互联网科技（青岛）有限公司",
-      "phone": "电话: +86 185 2159 5792",
-      "email": "Email: gracezou2829{'@'}gmail.com"
+      "phoneValue": "+86 185 2159 5792",
+      "emailValue": "gracezou2829{'@'}gmail.com"
     },
     "hangzhou": {
       "name": "大小象互联网科技杭州办事处",
-      "phone": "电话: +86 130 6797 9153",
-      "email": "Email: galiathusi1i{'@'}gmail.com"
+      "phoneValue": "+86 130 6797 9153",
+      "emailValue": "galiathusi1i{'@'}gmail.com"
     }
   },
   "policy": {
@@ -180,5 +186,11 @@
   "cta": {
     "title": "需要为您的业务定制技术方案？",
     "button": "联系我们获取方案"
+  },
+  "hero": {
+    "title": "技术解决方案提供商",
+    "subtitle": "凭借行业经验和全方位的专业技能，帮助客户构建先进的 IT 系统，快速增强核心竞争力。",
+    "primaryCta": "查看解决方案",
+    "secondaryCta": "联系我们"
   }
 }

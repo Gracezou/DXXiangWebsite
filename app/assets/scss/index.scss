@@ -23,13 +23,3 @@ body {
   font-size: var(--dx-text-body);
   line-height: var(--dx-leading-normal);
 }
-
-.el-header {
-  --el-menu-item-height: 94px;
-  --el-menu-item-font-size: var(--dx-text-lg);
-}
-
-.el-breadcrumb {
-  --el-text-color-primary: var(--dx-color-brand);
-  padding: var(--dx-space-xl) var(--dx-space-xl) var(--dx-space-lg);
-}

@@ -1,0 +1,72 @@
+@use "./mixins" as *;
+
+// 内页共用版式：区块、容器、图文并置、正文。
+// 各内页以 @use "~/assets/scss/page" as *; 引入，避免版式规则重复。
+
+.section {
+  padding: var(--dx-space-4xl) 0;
+
+  @include mobile {
+    padding: var(--dx-space-2xl) 0;
+  }
+
+  &--light {
+    background-color: var(--dx-color-surface);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--dx-space-xl);
+
+  @include mobile {
+    padding: 0 var(--dx-space-md);
+  }
+
+  &--narrow {
+    max-width: 820px;
+  }
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--dx-space-2xl);
+
+  @include tablet-down {
+    grid-template-columns: 1fr;
+    gap: var(--dx-space-md);
+  }
+
+  // 交替图文左右位置，打破清一色的单一节奏
+  &--reverse .split_media {
+    order: -1;
+
+    @include tablet-down {
+      order: 0;
+    }
+  }
+
+  h1,
+  h2 {
+    margin: 0 0 var(--dx-space-md);
+    font-size: var(--dx-text-h1);
+    line-height: var(--dx-leading-tight);
+    color: var(--dx-color-heading);
+  }
+
+  p {
+    margin: 0 0 var(--dx-space-sm);
+    font-size: var(--dx-text-body);
+    line-height: var(--dx-leading-relaxed);
+    color: var(--dx-color-text);
+  }
+}
+
+.split_img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--dx-radius-md);
+}

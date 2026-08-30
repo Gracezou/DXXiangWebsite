@@ -1,88 +1,116 @@
 <template>
   <div class="home">
-    <ElCarousel trigger="click">
-      <ElCarouselItem>
-        <Image
-          src="/images/carousel_1.jpg"
-          :alt="$t('alt.carousel1')"
-          loading="eager"
-          fetchpriority="high"
-          sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
-          class="carousel_image"
-          width="1280"
-          height="920"
-        />
-        <div class="title_wrapper">
-          <h2>{{ $t("home.carousel.slide1.title") }}</h2>
-          <p>{{ $t("home.carousel.slide1.desc") }}</p>
-        </div>
-      </ElCarouselItem>
-      <ElCarouselItem>
-        <Image
-          src="/images/carousel_2.jpg"
-          :alt="$t('alt.carousel2')"
-          sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
-          class="carousel_image"
-          width="1280"
-          height="920"
-        />
-        <div class="title_wrapper">
-          <h2>{{ $t("home.carousel.slide2.title") }}</h2>
-          <p>{{ $t("home.carousel.slide2.desc") }}</p>
-        </div>
-      </ElCarouselItem>
-      <ElCarouselItem>
-        <Image
-          src="/images/carousel_3.jpg"
-          :alt="$t('alt.carousel3')"
-          sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
-          class="carousel_image"
-          width="1280"
-          height="920"
-        />
-        <div class="title_wrapper">
-          <h2>{{ $t("home.carousel.slide3.title") }}</h2>
-          <p>{{ $t("home.carousel.slide3.desc") }}</p>
-        </div>
-      </ElCarouselItem>
-    </ElCarousel>
-
-    <section class="part_content main">
-      <h1>{{ $t("home.tech.title") }}</h1>
-      <p>{{ $t("home.tech.p1") }}</p>
-      <p>{{ $t("home.tech.p2") }}</p>
-      <p>{{ $t("home.tech.p3") }}</p>
-      <p>{{ $t("home.tech.p4") }}</p>
-    </section>
-
-    <section class="part_content">
-      <h1>{{ $t("home.oneStop.title") }}</h1>
-      <p>{{ $t("home.oneStop.p1") }}</p>
-      <p>{{ $t("home.oneStop.p2") }}</p>
-      <p>{{ $t("home.oneStop.p3") }}</p>
+    <!-- Hero：单一主张 + 主次 CTA，替代 v2.0 的三屏轮播。
+         轮播会稀释主张且绝大多数访客只看第一屏。 -->
+    <section class="hero">
       <Image
-        src="/images/one_stop_solution.jpg"
-        :alt="$t('alt.oneStop')"
-        class="content_image"
-        sizes="sm:640px md:800px lg:800px xl:800px xxl:800px"
-        width="800"
-        height="200"
+        src="/images/carousel_1.jpg"
+        :alt="$t('alt.carousel1')"
+        loading="eager"
+        fetchpriority="high"
+        sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
+        width="1280"
+        height="920"
+        class="hero_bg"
       />
+      <div class="hero_inner">
+        <h1>{{ $t("hero.title") }}</h1>
+        <p class="hero_sub">{{ $t("hero.subtitle") }}</p>
+        <div class="hero_actions">
+          <NuxtLink :to="localePath('/solution')" class="btn btn--primary">
+            {{ $t("hero.primaryCta") }}
+          </NuxtLink>
+          <NuxtLink :to="localePath('/contact')" class="btn btn--ghost">
+            {{ $t("hero.secondaryCta") }}
+          </NuxtLink>
+        </div>
+      </div>
     </section>
 
-    <section class="part_content solution">
-      <h1>{{ $t("home.solutions.title") }}</h1>
-      <SolutionTab />
+    <!-- 服务卡片：承接原轮播三屏的内容，并列呈现而非依次播放 -->
+    <section class="section section--light">
+      <div class="container">
+        <header class="section_head">
+          <h2>{{ $t("home.servicesTitle") }}</h2>
+          <p>{{ $t("home.servicesIntro") }}</p>
+        </header>
+        <div class="card_grid">
+          <ServiceCard
+            :image="'/images/technology_solution_provider.jpg'"
+            :alt="$t('alt.solutionProvider')"
+            :image-width="800"
+            :image-height="200"
+            :title="$t('solution.provider.title')"
+            :description="$t('solution.provider.p1')"
+          />
+          <ServiceCard
+            :image="'/images/solution_web_app.jpg'"
+            :alt="$t('alt.webApp')"
+            :image-width="800"
+            :image-height="340"
+            :title="$t('solution.webApp.title')"
+            :description="$t('solution.webApp.p1')"
+          />
+          <ServiceCard
+            :image="'/images/carousel_3.jpg'"
+            :alt="$t('alt.carousel3')"
+            :image-width="1280"
+            :image-height="920"
+            :title="$t('solution.dataHunter.title')"
+            :description="$t('solution.dataHunter.p2')"
+          />
+        </div>
+      </div>
     </section>
 
-    <section class="slogan part_content">
+    <!-- 网络技术驱动：正文阅读区，浅色 -->
+    <section class="section">
+      <div class="container container--narrow">
+        <header class="section_head">
+          <h2>{{ $t("home.tech.title") }}</h2>
+        </header>
+        <div class="prose">
+          <p>{{ $t("home.tech.p1") }}</p>
+          <p>{{ $t("home.tech.p2") }}</p>
+          <p>{{ $t("home.tech.p3") }}</p>
+          <p>{{ $t("home.tech.p4") }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 一站式需求解决：图文并置，打破清一色的居中段落节奏 -->
+    <section class="section section--light">
+      <div class="container">
+        <div class="split">
+          <div class="split_text">
+            <h2>{{ $t("home.oneStop.title") }}</h2>
+            <p>{{ $t("home.oneStop.p1") }}</p>
+            <p>{{ $t("home.oneStop.p2") }}</p>
+            <p>{{ $t("home.oneStop.p3") }}</p>
+          </div>
+          <div class="split_media">
+            <Image
+              src="/images/one_stop_solution.jpg"
+              :alt="$t('alt.oneStop')"
+              sizes="sm:640px md:520px lg:560px xl:600px xxl:640px"
+              width="800"
+              height="200"
+              class="split_img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- slogan：深色横幅 -->
+    <section class="slogan">
       <Image
         src="/images/parallax_home.jpg"
         :alt="$t('alt.slogan')"
-        class="slogan_image"
         sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
         width="1920"
         height="814"
+        class="slogan_bg"
       />
       <p>{{ $t("home.slogan") }}</p>
     </section>
@@ -93,13 +121,14 @@
 
 <script setup lang="ts">
 import Image from "~/components/Image.vue";
-import SolutionTab from "~/components/Solution.vue";
+import ServiceCard from "~/components/ServiceCard.vue";
 import CallToAction from "~/components/CallToAction.vue";
 
 definePageMeta({ layout: "home" });
 
 const { t } = useI18n();
 const { site } = useAppConfig();
+const localePath = useLocalePath();
 const ogImage = "https://www.daxiaoxiang.com/images/og-cover.jpg";
 
 useSeoMeta({
@@ -115,7 +144,7 @@ useSeoMeta({
   twitterImage: ogImage,
 });
 
-// Organization 结构化数据。字段全部取自 v1.0 现有页面内容，
+// Organization 结构化数据。字段全部取自现有页面内容，
 // 未补充成立年份、员工规模、社交账号等站点未提供的信息。
 useHead({
   script: [
@@ -148,135 +177,214 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
-.home {
+// ---------- Hero ----------
+.hero {
   position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background-color: var(--dx-color-brand-deep);
+}
 
-  // 轮播高度由 CSS 控制（替代 v1.0 的 window.innerHeight 计算）：
-  // dvh 在移动端浏览器地址栏收起时表现更好，vh 作为降级
-  :deep(.el-carousel__container) {
-    height: 100vh;
-    height: 100dvh;
+.hero_bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.42;
+}
+
+.hero_inner {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--dx-space-3xl) var(--dx-space-xl);
+
+  @include mobile {
+    padding: var(--dx-space-2xl) var(--dx-space-md);
   }
 
-  .el-carousel__item {
-    height: 100%;
-  }
-
-  .carousel_image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .title_wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-100%, -50%);
-    width: 45%;
-    text-align: left;
+  h1 {
+    max-width: 16em;
+    margin: 0 0 var(--dx-space-md);
+    font-size: var(--dx-text-display);
+    line-height: var(--dx-leading-tight);
     color: var(--dx-color-on-image);
+  }
+}
 
-    // 移动端改为居中、加宽，避免文案被挤成窄条
-    @include tablet-down {
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 85%;
-      text-align: center;
-    }
+.hero_sub {
+  max-width: 34em;
+  margin: 0 0 var(--dx-space-xl);
+  font-size: var(--dx-text-lg);
+  line-height: var(--dx-leading-relaxed);
+  color: var(--dx-color-on-dark);
+}
 
-    h2 {
-      font-size: var(--dx-text-display);
-      line-height: var(--dx-leading-tight);
-      margin: 0 0 var(--dx-space-sm);
-    }
+.hero_actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dx-space-sm);
+}
 
-    p {
-      font-size: var(--dx-text-body);
-      line-height: var(--dx-leading-relaxed);
-      margin: 0 0 var(--dx-space-sm);
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--dx-space-xs) var(--dx-space-lg);
+  font-size: var(--dx-text-body);
+  font-weight: 500;
+  border-radius: var(--dx-radius-sm);
+  text-decoration: none;
+  transition: all var(--dx-duration) var(--dx-ease);
+
+  &--primary {
+    color: var(--dx-color-brand-deep);
+    background-color: var(--dx-color-accent);
+
+    &:hover {
+      filter: brightness(1.08);
     }
   }
 
-  section.part_content {
-    padding: var(--dx-space-4xl) var(--dx-space-md);
-    text-align: center;
-    font-size: var(--dx-text-body);
+  &--ghost {
+    color: var(--dx-color-on-image);
+    border: 1px solid rgb(255 255 255 / 45%);
 
-    @include mobile {
-      padding: var(--dx-space-2xl) var(--dx-space-md);
-    }
-
-    h1 {
-      margin-top: 0;
-      font-size: var(--dx-text-h2);
-      line-height: var(--dx-leading-tight);
-      color: var(--dx-color-heading);
-    }
-
-    p {
-      max-width: 900px;
-      margin: 0 auto var(--dx-space-sm);
-      color: var(--dx-color-text);
-      font-size: var(--dx-text-body);
-      line-height: var(--dx-leading-relaxed);
+    &:hover {
+      background-color: rgb(255 255 255 / 12%);
+      border-color: var(--dx-color-on-image);
     }
   }
+}
 
-  .part_content.main {
-    padding-top: var(--dx-space-5xl);
-    padding-bottom: var(--dx-space-5xl);
+// ---------- 通用区块 ----------
+.section {
+  padding: var(--dx-space-4xl) 0;
 
-    @include mobile {
-      padding-top: var(--dx-space-3xl);
-      padding-bottom: var(--dx-space-3xl);
-    }
-
-    h1 {
-      font-size: var(--dx-text-h1);
-      margin-bottom: var(--dx-space-xl);
-    }
+  @include mobile {
+    padding: var(--dx-space-2xl) 0;
   }
 
-  .slogan.part_content {
-    position: relative;
-    padding: 0;
-    height: 320px;
-
-    @include mobile {
-      height: 220px;
-    }
-
-    .slogan_image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    p {
-      position: absolute;
-      width: 100%;
-      max-width: none;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      margin: 0;
-      padding: 0 var(--dx-space-md);
-      font-size: var(--dx-text-h2);
-      color: var(--dx-color-on-image);
-    }
-  }
-
-  > section:nth-of-type(even) {
-    padding-top: var(--dx-space-2xl);
+  &--light {
     background-color: var(--dx-color-surface);
   }
+}
 
-  .content_image {
-    width: 100%;
-    max-width: 800px;
-    margin: var(--dx-space-md) auto 0;
-    border-radius: var(--dx-radius-md);
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--dx-space-xl);
+
+  @include mobile {
+    padding: 0 var(--dx-space-md);
   }
+
+  &--narrow {
+    max-width: 820px;
+  }
+}
+
+.section_head {
+  margin-bottom: var(--dx-space-xl);
+
+  h2 {
+    margin: 0 0 var(--dx-space-xs);
+    font-size: var(--dx-text-h1);
+    line-height: var(--dx-leading-tight);
+    color: var(--dx-color-heading);
+  }
+
+  p {
+    max-width: 46em;
+    margin: 0;
+    font-size: var(--dx-text-lg);
+    line-height: var(--dx-leading-relaxed);
+    color: var(--dx-color-text);
+  }
+}
+
+.card_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--dx-space-md);
+}
+
+.prose p {
+  margin: 0 0 var(--dx-space-sm);
+  font-size: var(--dx-text-body);
+  line-height: var(--dx-leading-relaxed);
+  color: var(--dx-color-text);
+}
+
+// ---------- 图文并置 ----------
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--dx-space-2xl);
+
+  @include tablet-down {
+    grid-template-columns: 1fr;
+    gap: var(--dx-space-md);
+  }
+
+  h2 {
+    margin: 0 0 var(--dx-space-md);
+    font-size: var(--dx-text-h1);
+    line-height: var(--dx-leading-tight);
+    color: var(--dx-color-heading);
+  }
+
+  p {
+    margin: 0 0 var(--dx-space-sm);
+    font-size: var(--dx-text-body);
+    line-height: var(--dx-leading-relaxed);
+    color: var(--dx-color-text);
+  }
+}
+
+.split_img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--dx-radius-md);
+}
+
+// ---------- slogan 横幅 ----------
+.slogan {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 320px;
+  overflow: hidden;
+  background-color: var(--dx-color-brand-deep);
+
+  @include mobile {
+    height: 220px;
+  }
+
+  p {
+    position: relative;
+    max-width: 24em;
+    margin: 0;
+    padding: 0 var(--dx-space-md);
+    font-size: var(--dx-text-h2);
+    line-height: var(--dx-leading-tight);
+    text-align: center;
+    color: var(--dx-color-on-image);
+  }
+}
+
+.slogan_bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.38;
 }
 </style>

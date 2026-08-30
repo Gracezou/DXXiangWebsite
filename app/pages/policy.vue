@@ -1,19 +1,25 @@
 <template>
-  <div class="policy_wrapper">
+  <div class="page">
     <Breadcrumb :current="$t('breadcrumb.policy')" />
-    <div class="content">
-      <p>{{ $t("policy.p1") }}</p>
-      <p>{{ $t("policy.p2") }}</p>
-      <p>{{ $t("policy.p3") }}</p>
-      <p>{{ $t("policy.p4") }}</p>
-      <p>{{ $t("policy.p5") }}</p>
-      <p>{{ $t("policy.disclaimerTitle") }}</p>
-      <p>{{ $t("policy.disclaimer") }}</p>
-      <p>{{ $t("policy.lawTitle") }}</p>
-      <p>{{ $t("policy.law") }}</p>
-      <p>{{ $t("policy.updateTitle") }}</p>
-      <p>{{ $t("policy.update") }}</p>
-    </div>
+
+    <section class="section">
+      <div class="container container--narrow">
+        <h1>{{ $t("breadcrumb.policy") }}</h1>
+        <div class="prose">
+          <p>{{ $t("policy.p1") }}</p>
+          <h2>{{ $t("policy.p2") }}</h2>
+          <p>{{ $t("policy.p3") }}</p>
+          <p>{{ $t("policy.p4") }}</p>
+          <p>{{ $t("policy.p5") }}</p>
+          <h2>{{ $t("policy.disclaimerTitle") }}</h2>
+          <p>{{ $t("policy.disclaimer") }}</p>
+          <h2>{{ $t("policy.lawTitle") }}</h2>
+          <p>{{ $t("policy.law") }}</p>
+          <h2>{{ $t("policy.updateTitle") }}</h2>
+          <p>{{ $t("policy.update") }}</p>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -38,18 +44,25 @@ useSeoMeta({
 </script>
 
 <style lang="scss" scoped>
-.policy_wrapper {
-  .content {
-    padding: var(--dx-space-md) var(--dx-space-xl) var(--dx-space-2xl);
-    background-color: var(--dx-color-surface);
+@use "~/assets/scss/page" as *;
 
-    @include mobile {
-      padding: var(--dx-space-md) var(--dx-space-md) var(--dx-space-lg);
-    }
+h1 {
+  margin: 0 0 var(--dx-space-lg);
+  font-size: var(--dx-text-h1);
+  line-height: var(--dx-leading-tight);
+  color: var(--dx-color-heading);
+}
+
+.prose {
+  h2 {
+    margin: var(--dx-space-xl) 0 var(--dx-space-xs);
+    font-size: var(--dx-text-h3);
+    line-height: var(--dx-leading-tight);
+    color: var(--dx-color-heading);
   }
 
   p {
-    max-width: 1000px;
+    margin: 0 0 var(--dx-space-sm);
     font-size: var(--dx-text-body);
     line-height: var(--dx-leading-relaxed);
     color: var(--dx-color-text);
