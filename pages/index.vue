@@ -76,12 +76,15 @@
       />
       <p>{{ $t("home.slogan") }}</p>
     </section>
+
+    <CallToAction />
   </div>
 </template>
 
 <script setup lang="ts">
 import Image from "~~/components/Image.vue";
 import SolutionTab from "~~/components/Solution.vue";
+import CallToAction from "~~/components/CallToAction.vue";
 
 definePageMeta({ layout: "home" });
 

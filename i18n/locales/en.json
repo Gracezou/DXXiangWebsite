@@ -176,5 +176,9 @@
       "title": "Privacy Policy",
       "description": "Privacy policy for the Mighty Elephant website: collection, use and transfer of information, disclaimer, governing law, and policy updates."
     }
+  },
+  "cta": {
+    "title": "Need a technology solution built for your business?",
+    "button": "Get in Touch"
   }
 }

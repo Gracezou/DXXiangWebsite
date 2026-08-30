@@ -40,6 +40,7 @@
         <p>{{ $t("about.team.p3") }}</p>
       </section>
     </div>
+    <CallToAction />
   </div>
 </template>
 
@@ -47,6 +48,7 @@
 import Image from "~~/components/Image.vue";
 import Breadcrumb from "~~/components/Breadcrumb.vue";
 import Divider from "~~/components/Divider.vue";
+import CallToAction from "~~/components/CallToAction.vue";
 
 const { t } = useI18n();
 const ogImage = "https://www.daxiaoxiang.com/images/og-cover.jpg";
