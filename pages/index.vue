@@ -73,9 +73,6 @@
       <Image src="/images/parallax_home.jpg" class="logan_image" />
       <p>我们将继续致力于用移动互联网技术感知未来...</p>
     </section>
-    <section class="part_content partner">
-      <h1>客户及合作伙伴</h1>
-    </section>
   </div>
 </template>
 <script setup lang="ts">
