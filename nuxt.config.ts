@@ -23,6 +23,15 @@ export default defineNuxtConfig({
     "/abort": { redirect: { to: "/about", statusCode: 301 } },
   },
 
+  // 静态生成：站点无动态数据，全部页面预渲染为 HTML 后部署到 CDN / 对象存储。
+  // 英文路由待 B3 接入 i18n 后需在 routes 中显式补齐（语言切换由 JS 驱动，crawlLinks 爬不到）。
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/about", "/solution", "/contact", "/policy"],
+    },
+  },
+
   // css
   css: ["~/assets/scss/index.scss"],
 
@@ -32,30 +41,13 @@ export default defineNuxtConfig({
   },
 
   // build modules
-  modules: [
-    "@vueuse/nuxt",
-    "@unocss/nuxt",
-    "@element-plus/nuxt",
-    "@nuxtjs/color-mode",
-  ],
+  modules: ["@vueuse/nuxt", "@unocss/nuxt", "@element-plus/nuxt"],
 
   // vueuse
   vueuse: {
     ssrHandlers: true,
   },
 
-  // colorMode
-  colorMode: {
-    classSuffix: "",
-  },
-
-  unocss: {
-    uno: true,
-    attributify: true,
-    icons: {
-      scale: 1.2,
-    },
-  },
   vite: {
     css: {
       preprocessorOptions: {

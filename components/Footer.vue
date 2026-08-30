@@ -4,22 +4,16 @@
       <div class="content_main">
         <div class="policy_box">
           <p>关于更多信息或疑问，请及时联络我们国内服务人员。</p>
-          <el-link type="info" href="/policy" :underline="false">
+          <NuxtLink to="/policy" class="footer_link footer_link--info">
             隐私政策
-          </el-link>
+          </NuxtLink>
         </div>
         <div class="menu_box">
           <p>网站地图</p>
-          <el-link type="primary" href="/" :underline="false"> 首页 </el-link>
-          <el-link type="primary" href="/about" :underline="false">
-            关于
-          </el-link>
-          <el-link type="primary" href="/solution" :underline="false">
-            解决方案
-          </el-link>
-          <el-link type="primary" href="/contact" :underline="false">
-            联系我们
-          </el-link>
+          <NuxtLink to="/" class="footer_link">首页</NuxtLink>
+          <NuxtLink to="/about" class="footer_link">关于</NuxtLink>
+          <NuxtLink to="/solution" class="footer_link">解决方案</NuxtLink>
+          <NuxtLink to="/contact" class="footer_link">联系我们</NuxtLink>
         </div>
         <div class="contact_box">
           <p>+86 185 2159 5792</p>
@@ -94,6 +88,21 @@ const year = new Date().getFullYear();
       font-size: 16px;
       font-weight: bold;
       color: #31384d;
+    }
+  }
+  // 替代 el-link：保持原有配色与字重，改用 NuxtLink 以走客户端路由
+  .footer_link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--el-color-primary);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    &:hover {
+      opacity: 0.8;
+    }
+    &--info {
+      color: var(--el-color-info);
     }
   }
   .app_box {

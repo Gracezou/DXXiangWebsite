@@ -9,7 +9,6 @@
 </template>
 <script setup lang="ts">
 import { Picture } from "@element-plus/icons-vue";
-import { ElImage } from "element-plus";
 const props = defineProps({
   width: { type: String, default: "100%" },
   height: { type: String, default: "100%" },

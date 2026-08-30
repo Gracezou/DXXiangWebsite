@@ -1,9 +1,6 @@
 <template>
   <div class="home">
-    <div class="home_header">
-      <Header />
-    </div>
-    <ElCarousel trigger="click" :height="carouselHeight">
+    <ElCarousel trigger="click">
       <ElCarouselItem>
         <Image src="/images/carousel_1.jpg" />
         <div class="title_wrapper">
@@ -76,28 +73,20 @@
   </div>
 </template>
 <script setup lang="ts">
-import Header from "~~/components/Header.vue";
 import Image from "~~/components/Image.vue";
 import SolutionTab from "~~/components/Solution.vue";
-import { ElCarousel, ElCarouselItem, ElAffix } from "element-plus";
-const carouselHeight = ref(
-  process.client ? window.innerHeight + "px" : "400px"
-);
-process.client &&
-  (window.onresize = function () {
-    carouselHeight.value = window.innerHeight + "px";
-  });
+
+definePageMeta({ layout: "home" });
 </script>
 <style lang="scss" scoped>
 .home {
   height: 100%;
   position: relative;
-  .home_header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
+  // 轮播高度改由 CSS 控制，替代原先的 window.innerHeight 计算：
+  // dvh 在移动端浏览器地址栏收起时表现更好，vh 作为降级。
+  :deep(.el-carousel__container) {
+    height: 100vh;
+    height: 100dvh;
   }
   .el-carousel__item {
     height: 100%;
