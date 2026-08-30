@@ -1,5 +1,6 @@
 {
   "name": "daxiaoxiang",
+  "version": "2.1.0",
   "packageManager": "pnpm@10.34.5",
   "private": true,
   "scripts": {
