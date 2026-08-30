@@ -3,7 +3,8 @@
 大小象互联网科技（青岛）有限公司的官方网站，中英双语，静态生成后部署到 CDN / 对象存储。
 
 - 正式域名：<https://www.daxiaoxiang.com>
-- 当前版本：v2.0（升级任务书见 [docs/v2.0-upgrade-plan.md](docs/v2.0-upgrade-plan.md)）
+- 当前版本：**v2.1.0**
+- 升级记录：[v2.0 任务书](docs/v2.0-upgrade-plan.md) · [v2.1 任务清单](docs/v2.1-plan.md)
 
 ## 技术栈
 
@@ -99,30 +100,21 @@ sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
 pnpm generate
 ```
 
-产物在 `.output/public`，整个目录上传到 CDN / 对象存储 / Nginx 即可。
+产物在 `.output/public`，整个目录即可部署。
 
-### 托管层必须配置的两项
+一键构建并发布（含原子切换与线上冒烟检查）：
 
-静态产物本身无法处理服务端重定向与错误页路由，以下两项必须在托管层配置：
-
-| 项 | 配置 |
-| --- | --- |
-| 旧链接 301 | `/abort` → `/about`（v1.0 的路由拼写错误，v2.0 已更名） |
-| 404 页面 | 指向产物中的 `404.html`（可选：项目内已有 catch-all 路由兜底） |
-
-Nginx 示例：
-
-```nginx
-location = /abort {
-    return 301 /about;
-}
-
-error_page 404 /404.html;
+```bash
+./deploy/deploy.sh
 ```
 
-> **404 的兜底**：项目内有 `pages/[...slug].vue` catch-all 路由。无论托管层返回 `404.html` 还是 `200.html`（SPA fallback），未知路径都能渲染出统一的 404 界面，不会出现空白页或托管商的默认错误页。
+**完整的部署说明、Nginx 配置与缓存策略见 [deploy/README.md](deploy/README.md)。**
 
-> `nuxt.config.ts` 中的 `routeRules` 重定向只在 `pnpm dev` / `pnpm preview` 下生效。静态产物中它会被编译成一个 `<meta http-equiv="refresh">` 页面，那**不是** 301，对 SEO 不传递权重。托管层配置好后该文件不会被读到。
+两点必须知道：
+
+- **缓存与压缩不是可选项**。同一份产物，缺少 gzip 与缓存头时 Lighthouse Performance 只有 79，配好后是 93。
+- **`/abort` → `/about` 的 301 必须由托管层发出**。静态产物里 Nitro 只会生成一个 `<meta http-equiv="refresh">` 页面，那对 SEO 不传递权重。
+
 
 ## 上线前检查清单
 

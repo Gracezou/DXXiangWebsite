@@ -1,0 +1,177 @@
+@use "./mixins" as *;
+
+// 内页共用版式。深色统一：区块之间用分隔线而非底色交替。
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 var(--dx-space-lg);
+
+  @include mobile {
+    padding: 0 var(--dx-space-md);
+  }
+
+  &--narrow {
+    max-width: 760px;
+  }
+}
+
+.section {
+  padding: var(--dx-space-3xl) 0;
+  border-top: 1px solid var(--dx-line);
+
+  @include mobile {
+    padding: var(--dx-space-2xl) 0;
+  }
+
+  &--flush {
+    border-top: none;
+  }
+}
+
+.eyebrow {
+  margin: 0 0 var(--dx-space-sm);
+  font-family: var(--dx-font-mono);
+  font-size: var(--dx-text-xs);
+  letter-spacing: var(--dx-tracking-label);
+  text-transform: uppercase;
+  color: var(--dx-color-accent);
+}
+
+.section_head {
+  max-width: 52ch;
+  margin-bottom: var(--dx-space-xl);
+
+  h1,
+  h2 {
+    font-size: var(--dx-text-h1);
+    line-height: var(--dx-leading-tight);
+    letter-spacing: var(--dx-tracking-heading);
+    font-weight: 600;
+    margin-bottom: var(--dx-space-xs);
+  }
+
+  p {
+    margin: 0;
+    color: var(--dx-color-muted);
+  }
+}
+
+// 正文：收窄到 65 字符左右
+.prose {
+  max-width: 65ch;
+
+  p {
+    margin: 0 0 var(--dx-space-sm);
+    color: var(--dx-color-muted);
+    line-height: var(--dx-leading-relaxed);
+  }
+
+  h2 {
+    margin: var(--dx-space-xl) 0 var(--dx-space-xs);
+    font-size: var(--dx-text-h3);
+    line-height: var(--dx-leading-tight);
+    letter-spacing: var(--dx-tracking-tight);
+    font-weight: 600;
+    color: var(--dx-color-text);
+  }
+}
+
+// 图文并置：交替左右，打破单一节奏
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--dx-space-2xl);
+
+  @include tablet-down {
+    grid-template-columns: 1fr;
+    gap: var(--dx-space-lg);
+  }
+
+  &--reverse .split_media {
+    order: -1;
+
+    @include tablet-down {
+      order: 0;
+    }
+  }
+
+  h1,
+  h2 {
+    margin: 0 0 var(--dx-space-md);
+    font-size: var(--dx-text-h1);
+    line-height: var(--dx-leading-tight);
+    letter-spacing: var(--dx-tracking-heading);
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0 0 var(--dx-space-sm);
+    max-width: 56ch;
+    color: var(--dx-color-muted);
+  }
+}
+
+.split_media {
+  border: 1px solid var(--dx-line);
+  background-color: var(--dx-color-surface);
+}
+
+.split_img {
+  display: block;
+  width: 100%;
+  height: auto;
+  // 图库照片降为纹理：去饱和 + 压暗，避免与深色版式冲突
+  filter: grayscale(0.72) brightness(0.82) contrast(1.06);
+  mix-blend-mode: luminosity;
+  opacity: 0.9;
+}
+
+// 按钮
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dx-space-2xs);
+  padding: 13px var(--dx-space-md);
+  font-family: var(--dx-font-body);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--dx-radius-sm);
+  transition: all var(--dx-duration) var(--dx-ease);
+
+  &--primary {
+    background-color: var(--dx-color-accent);
+    color: var(--dx-color-on-accent);
+
+    &:hover {
+      background-color: var(--dx-color-accent-hover);
+    }
+  }
+
+  &--ghost {
+    border-color: var(--dx-line-strong);
+    color: var(--dx-color-text);
+
+    &:hover {
+      border-color: var(--dx-color-accent);
+      color: var(--dx-color-accent);
+    }
+  }
+}
+
+// ---------- 动效 ----------
+// 这里只保留 hover / focus 的 transition（见各组件），不做入场动画。
+//
+// 原因：任何「从 opacity 0 淡入」的入场动画都有一个固有风险 —— 动画一旦
+// 未执行（浏览器对不可见页面的节流、CSS 未加载、动画被禁用），元素会永久
+// 停在透明状态，内容彻底不可见。收益是一次性的淡入，代价是可能整屏空白，
+// 这个交换不成立。
+//
+// 滚动显现同理，且额外依赖 IntersectionObserver —— 实测在本项目的自动化
+// 验证环境中 IO 完全不触发，无法验证的特性不上线。
+//
+// transition 是安全的：它只在状态变化时生效，不影响元素的初始可见性。

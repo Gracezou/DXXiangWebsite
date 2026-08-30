@@ -26,7 +26,24 @@ export default defineNuxtConfig({
       meta: [
         { name: "viewport", content: "width=device-width, initial-scale=1" },
       ],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        // 预加载首屏关键字体：Hero 标题与正文。其余字重按需加载。
+        {
+          rel: "preload",
+          as: "font",
+          type: "font/woff2",
+          href: "/fonts/sora-600-latin.woff2",
+          crossorigin: "anonymous",
+        },
+        {
+          rel: "preload",
+          as: "font",
+          type: "font/woff2",
+          href: "/fonts/ibm-plex-sans-400-latin.woff2",
+          crossorigin: "anonymous",
+        },
+      ],
     },
   },
 
@@ -67,9 +84,6 @@ export default defineNuxtConfig({
 
   // build modules
   modules: [
-    "@vueuse/nuxt",
-    "@unocss/nuxt",
-    "@element-plus/nuxt",
     "@nuxtjs/i18n",
     "@nuxt/image",
     "@nuxtjs/sitemap",
@@ -118,32 +132,29 @@ export default defineNuxtConfig({
     strategy: "prefix_except_default",
     // hreflang 与 canonical 需要绝对 URL，故必须配置 baseUrl
     baseUrl: "https://www.daxiaoxiang.com",
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: "i18n_locale",
-      redirectOn: "root",
-      alwaysRedirect: false,
-    },
-  },
 
-  // vueuse
-  vueuse: {
-    ssrHandlers: true,
+    // 仅用 Composition API，去掉 Options API 兼容层。
+    // 注意：不要开启 dropMessageCompiler —— 实测消息未被正确预编译，
+    // 运行时失去编译器后页面报 "unhandled node type: 0" 且文案渲染为空。
+    bundle: {
+      compositionOnly: true,
+    },
+    // 静态站点必须关闭浏览器语言检测。
+    // 预渲染的 HTML 对所有访客是同一份，若由 cookie 在客户端切换语言，
+    // 会与服务端渲染的内容不一致，产生 hydration mismatch
+    // （Nuxt 4 + i18n v10 下会实际触发，Nuxt 3 + v9 下被静默吞掉）。
+    // 语言完全由 URL 决定：/ 为中文，/en 为英文，切换通过 Header 的链接。
+    detectBrowserLanguage: false,
   },
 
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
-          // global.scss 提供 Element Plus 主题变量；_mixins.scss 提供响应式断点，
-          // 以 as * 注入使各组件可直接 @include mobile / tablet-down
-          additionalData: `@use "@/assets/scss/global.scss" as element; @use "@/assets/scss/mixins" as *;`,
+          // 注入响应式断点 mixin，使各组件可直接 @include mobile / tablet-down
+          additionalData: `@use "@/assets/scss/mixins" as *;`,
         },
       },
     },
-  },
-  elementPlus: {
-    icon: "ElIcon",
-    importStyle: "scss",
   },
 });

@@ -49,7 +49,9 @@
     "solutions": {
       "title": "Proven Solutions"
     },
-    "slogan": "We remain committed to sensing the future through mobile internet technology..."
+    "slogan": "We remain committed to sensing the future through mobile internet technology...",
+    "servicesTitle": "What We Do",
+    "servicesIntro": "Three business lines covering the full path from systems delivery to data acquisition and analysis."
   },
   "about": {
     "company": {
@@ -76,31 +78,38 @@
       "title": "Technology Solutions Provider",
       "p1": "We provide technical specialists and business experts with extensive implementation experience, each holding deep professional knowledge and skill in their own field.",
       "p2": "With our help, clients can build advanced IT systems and rapidly strengthen their core competitiveness, allowing them to stand out in a competitive market.",
-      "p3": "We are committed to building long-term partnerships and growing together with our clients. Whatever the challenge, we commit our full effort to providing expert support and solutions."
+      "p3": "We are committed to building long-term partnerships and growing together with our clients. Whatever the challenge, we commit our full effort to providing expert support and solutions.",
+      "ai": "Bringing AI into systems delivery, so existing business processes gain intelligent handling and decision support."
     },
     "webApp": {
       "title": "Seamless Apps and Web",
       "p1": "Seamless integration between applications and the web has become an important trend in modern information technology, opening up new commercial opportunities for companies and brands.",
       "p2": "Using web-based payment within an app lets users complete a payment without leaving the application, saving them time and effort and improving satisfaction.",
-      "p3": "By connecting applications and web pages, companies and brands can also market and promote more effectively, raising both conversion and customer loyalty."
+      "p3": "By connecting applications and web pages, companies and brands can also market and promote more effectively, raising both conversion and customer loyalty.",
+      "ai": "Embedding AI assistants into applications and web pages to handle enquiries, content retrieval and guided workflows."
     },
     "dataHunter": {
       "title": "Web Data Hunters",
       "p1": "Reverse engineering is the practice of analysing and studying the behaviour of software and systems in order to understand their internal mechanisms — applied in areas such as malware research, software reverse engineering and cryptographic analysis.",
       "p2": "Crawler technology extracts data from web pages automatically and then processes and analyses it, supporting web data mining, search engine optimisation and competitive intelligence.",
-      "p3": "Big data processing handles data that is vast, complex and heterogeneous, serving data analysis, data mining and machine learning."
+      "p3": "Big data processing handles data that is vast, complex and heterogeneous, serving data analysis, data mining and machine learning.",
+      "ai": "Collection is followed by comprehension — commercial models classify, extract from and summarise unstructured data."
     }
   },
   "contact": {
+    "labels": {
+      "phone": "Tel",
+      "email": "Email"
+    },
     "qingdao": {
       "name": "Mighty Elephant Internet Technology (Qingdao) Co., Ltd.",
-      "phone": "Tel: +86 185 2159 5792",
-      "email": "Email: gracezou2829{'@'}gmail.com"
+      "phoneValue": "+86 185 2159 5792",
+      "emailValue": "gracezou2829{'@'}gmail.com"
     },
     "hangzhou": {
       "name": "Mighty Elephant Internet Technology — Hangzhou Office",
-      "phone": "Tel: +86 130 6797 9153",
-      "email": "Email: galiathusi1i{'@'}gmail.com"
+      "phoneValue": "+86 130 6797 9153",
+      "emailValue": "galiathusi1i{'@'}gmail.com"
     }
   },
   "policy": {
@@ -180,5 +189,37 @@
   "cta": {
     "title": "Need a technology solution built for your business?",
     "button": "Get in Touch"
+  },
+  "hero": {
+    "title": "Technology that lands in real operations",
+    "subtitle": "Combining industry experience with comprehensive professional skills to build advanced IT systems, and bringing AI to existing operations to strengthen core competitiveness.",
+    "primaryCta": "View Solutions",
+    "secondaryCta": "Get in Touch"
+  },
+  "ai": {
+    "title": "AI Across Every Service Line",
+    "intro": "We don't build our own models. We engineer established commercial models into the systems our clients actually run.",
+    "items": {
+      "app": {
+        "title": "AI Application Development",
+        "desc": "Building AI applications around specific business scenarios — from requirements and solution design through development and deployment."
+      },
+      "engineering": {
+        "title": "Commercial Model Engineering",
+        "desc": "Engineering and integrating established commercial large models: prompt design, context management, call orchestration and cost control."
+      },
+      "assistant": {
+        "title": "AI Assistants",
+        "desc": "Embedding assistants into websites and applications to handle enquiries, information retrieval and guided workflows."
+      }
+    }
+  },
+  "facts": {
+    "linesLabel": "Service lines",
+    "linesValue": "Systems · Integration · Data",
+    "industriesLabel": "Industries",
+    "industriesValue": "Banking · Securities · Funds · Insurance · Government",
+    "locationsLabel": "Offices",
+    "locationsValue": "Qingdao · Hangzhou"
   }
 }
