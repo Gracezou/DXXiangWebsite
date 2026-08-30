@@ -1,88 +1,185 @@
 <template>
-  <div class="footer_wrapper">
+  <footer class="footer_wrapper">
     <div class="content">
-      <div class="policy_box">
-        <p>关于更多信息或疑问，请及时联络我们国内服务人员。</p>
-        <el-link type="info" href="/policy" :underline="false">
-          隐私政策
-        </el-link>
+      <div class="content_main">
+        <div class="policy_box">
+          <p>{{ $t("footer.policyNote") }}</p>
+          <NuxtLink
+            :to="localePath('/policy')"
+            class="footer_link footer_link--info"
+          >
+            {{ $t("footer.policyLink") }}
+          </NuxtLink>
+        </div>
+        <div class="menu_box">
+          <p class="box_title">{{ $t("footer.sitemap") }}</p>
+          <NuxtLink :to="localePath('/')" class="footer_link">
+            {{ $t("nav.home") }}
+          </NuxtLink>
+          <NuxtLink :to="localePath('/about')" class="footer_link">
+            {{ $t("nav.about") }}
+          </NuxtLink>
+          <NuxtLink :to="localePath('/solution')" class="footer_link">
+            {{ $t("nav.solution") }}
+          </NuxtLink>
+          <NuxtLink :to="localePath('/contact')" class="footer_link">
+            {{ $t("nav.contact") }}
+          </NuxtLink>
+        </div>
+        <div class="contact_box">
+          <p class="phone">{{ $t("footer.phone") }}</p>
+          <p class="hours">{{ $t("footer.hours") }}</p>
+          <p class="address">{{ $t("footer.address") }}</p>
+        </div>
+        <div class="app_box">
+          <p class="box_title">{{ $t("footer.appTitle") }}</p>
+          <p>{{ $t("footer.appDesc") }}</p>
+        </div>
       </div>
-      <div class="menu_box">
-        <p>网站地图</p>
-        <el-link type="primary" href="/" :underline="false"> 首页 </el-link>
-        <el-link type="primary" href="/abort" :underline="false">
-          关于
-        </el-link>
-        <el-link type="primary" href="/solution" :underline="false">
-          解决方案
-        </el-link>
-        <el-link type="primary" href="/contact" :underline="false">
-          联系我们
-        </el-link>
+      <div class="copyright">
+        <span>© {{ year }} {{ $t("site.company") }}</span>
+        <a
+          v-if="site.icp"
+          href="https://beian.miit.gov.cn/"
+          target="_blank"
+          rel="noopener"
+        >
+          {{ site.icp }}
+        </a>
+        <a
+          v-if="site.police"
+          :href="`http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${site.police}`"
+          target="_blank"
+          rel="noopener"
+        >
+          {{ $t("footer.policeLabel", { code: site.police }) }}
+        </a>
       </div>
-      <div class="contact_box">
-        <p>+86 185 2159 5792</p>
-        <p>联络时间在 09:00-AM - 06:00-PM</p>
-        <p class="address">中国 青岛 / 中国 杭州</p>
-      </div>
-      <Image src="/images/footer-qcode.png" height="100px" width="100px" />
     </div>
-  </div>
+  </footer>
 </template>
 
 <script setup lang="ts">
-import Image from "~~/components/Image.vue";
+const { site } = useAppConfig();
+const localePath = useLocalePath();
+const year = new Date().getFullYear();
 </script>
+
 <style lang="scss" scoped>
 .footer_wrapper {
-  background-color: #003153;
-  padding-top: 90px;
-  height: 100%;
-  box-sizing: border-box;
-  color: #848e97;
-  font-size: 14px;
+  padding-top: var(--dx-space-3xl);
+  background-color: var(--dx-color-brand);
+  color: var(--dx-color-text);
+  font-size: var(--dx-text-sm);
+
+  @include mobile {
+    padding-top: var(--dx-space-xl);
+  }
+
   .content {
-    height: 100%;
-    box-sizing: border-box;
-    background-color: #f2f5f8;
-    display: flex;
-    padding: 60px 50px 70px;
+    background-color: var(--dx-color-surface);
+    padding: var(--dx-space-2xl) var(--dx-space-xl) var(--dx-space-lg);
+
+    @include mobile {
+      padding: var(--dx-space-lg) var(--dx-space-md) var(--dx-space-md);
+    }
+
     p {
       margin-top: 0;
     }
   }
-  .policy_box {
-    width: 25%;
-  }
-  .menu_box {
-    margin: 0 100px;
-    display: flex;
+}
+
+.content_main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dx-space-2xl);
+
+  @include mobile {
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    line-height: 24px;
-    p {
-      font-size: 16px;
-      font-weight: bold;
-      color: #31384d;
-    }
+    gap: var(--dx-space-lg);
   }
-  .contact_box {
-    margin-right: 30px;
-    p:first-child {
-      font-size: 30px;
-      font-weight: bold;
-      color: #31384d;
-      margin-bottom: 8px;
-    }
-    p:nth-child(2) {
-      margin-bottom: 8px;
-      margin-bottom: 30px;
-    }
-    .address {
-      font-size: 16px;
-      font-weight: bold;
-      color: #31384d;
+}
+
+.policy_box {
+  flex: 1 1 240px;
+  max-width: 320px;
+
+  @include mobile {
+    max-width: none;
+  }
+}
+
+.menu_box {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: var(--dx-leading-relaxed);
+}
+
+.contact_box {
+  flex: 1 1 240px;
+
+  .phone {
+    font-size: var(--dx-text-h3);
+    font-weight: bold;
+    color: var(--dx-color-text-strong);
+    margin-bottom: var(--dx-space-2xs);
+  }
+  .hours {
+    margin-bottom: var(--dx-space-md);
+  }
+  .address {
+    font-size: var(--dx-text-body);
+    font-weight: bold;
+    color: var(--dx-color-text-strong);
+  }
+}
+
+.app_box {
+  flex: 1 1 200px;
+  line-height: var(--dx-leading-relaxed);
+}
+
+.box_title {
+  font-size: var(--dx-text-body);
+  font-weight: bold;
+  color: var(--dx-color-text-strong);
+}
+
+.footer_link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--dx-color-brand);
+  font-size: var(--dx-text-sm);
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &--info {
+    color: var(--dx-color-text);
+  }
+}
+
+.copyright {
+  margin-top: var(--dx-space-lg);
+  padding-top: var(--dx-space-md);
+  border-top: 1px solid var(--dx-color-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dx-space-2xs) var(--dx-space-md);
+  font-size: var(--dx-text-xs);
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--dx-color-text-strong);
     }
   }
 }

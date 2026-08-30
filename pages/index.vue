@@ -1,179 +1,272 @@
 <template>
   <div class="home">
-    <div class="home_header">
-      <Header />
-    </div>
-    <ElCarousel trigger="click" :height="carouselHeight">
+    <ElCarousel trigger="click">
       <ElCarouselItem>
-        <Image src="/images/carousel_1.jpg" />
+        <Image
+          src="/images/carousel_1.jpg"
+          :alt="$t('alt.carousel1')"
+          loading="eager"
+          fetchpriority="high"
+          sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
+          class="carousel_image"
+        />
         <div class="title_wrapper">
-          <h2>技术解决方案提供商</h2>
-          <p>
-            我们提供一批行业内实施经验丰富的技术人才和业务专家，凭借行业经验和全方位的专业技能，坚持以客户服务为中心，无论客户面临何种挑战，我们都将竭尽全力为其提供专业的支持和解决方案。
-          </p>
+          <h2>{{ $t("home.carousel.slide1.title") }}</h2>
+          <p>{{ $t("home.carousel.slide1.desc") }}</p>
         </div>
       </ElCarouselItem>
       <ElCarouselItem>
-        <Image src="/images/carousel_2.jpg" />
+        <Image
+          src="/images/carousel_2.jpg"
+          :alt="$t('alt.carousel2')"
+          sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
+          class="carousel_image"
+        />
         <div class="title_wrapper">
-          <h2>应用程序与网页无缝助力</h2>
-          <p>
-            应用程序与网页的无缝连接已经成为了现代信息技术发展的一个重要趋势，对于企业和用户来说，都具有重要的意义。不仅可以提高用户的使用体验，同时也可以为企业和品牌带来更多的商业机会。当应用程序与网页紧密结合时，它们可以实现更多的功能，更方便地让用户获取信息和服务。
-          </p>
+          <h2>{{ $t("home.carousel.slide2.title") }}</h2>
+          <p>{{ $t("home.carousel.slide2.desc") }}</p>
         </div>
       </ElCarouselItem>
       <ElCarouselItem>
-        <Image src="/images/carousel_3.jpg" />
+        <Image
+          src="/images/carousel_3.jpg"
+          :alt="$t('alt.carousel3')"
+          sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
+          class="carousel_image"
+        />
         <div class="title_wrapper">
-          <h2>网络数据猎手</h2>
-          <p>
-            可以自动化地从网页中提取数据，并进行处理和分析，可以用于网络数据挖掘、搜索引擎优化、竞争情报收集等领域。而大数据处理则是指处理海量、复杂、异构数据的技术，可以用于数据分析、数据挖掘、机器学习等领域
-          </p>
+          <h2>{{ $t("home.carousel.slide3.title") }}</h2>
+          <p>{{ $t("home.carousel.slide3.desc") }}</p>
         </div>
       </ElCarouselItem>
     </ElCarousel>
-    <section class="part_content main">
-      <h1>网络技术驱动：引领未来</h1>
-      <p>
-        网络技术驱动着我们的数字生活，它不仅改变了我们的工作和生活方式，而且对于经济和社会的发展也有着深远的影响。
-      </p>
-      <p>
-        通过网络技术的不断创新和应用，我们可以实现更高效、更智能、更便捷的生产和服务方式，创造更多的价值和机会。
-      </p>
-      <p>
-        例如，通过云计算、大数据、人工智能等网络技术的应用，可以提高生产和服务效率，降低成本，优化商业模式和创新产品；
-      </p>
-      <p>
-        通过网络技术的支持，可以实现教育、医疗、金融、交通等领域的数字化和智能化，为人们提供更好的生活和服务体验。
-      </p>
-    </section>
-    <section class="part_content">
-      <h1>一站式需求解决</h1>
-      <p>
-        大小象科技依托集团公司雄厚的基础设施和行业实力，整合引入一批行业内实施经验丰富的技术人才和业务专家，
-      </p>
-      <p>
-        凭借行业经验和全方位的专业技能，坚持以客户服务为中心，帮助客户构建先进的IT系统快速增强核心竞争力。
-      </p>
-      <p>
-        业务范围涵盖咨询、产品研发、信息技术服务、系统集成、业务流程外包等方面，涉及银行、证券、基金、保险、移动、政府等多个行业。
-      </p>
 
+    <section class="part_content main">
+      <h1>{{ $t("home.tech.title") }}</h1>
+      <p>{{ $t("home.tech.p1") }}</p>
+      <p>{{ $t("home.tech.p2") }}</p>
+      <p>{{ $t("home.tech.p3") }}</p>
+      <p>{{ $t("home.tech.p4") }}</p>
+    </section>
+
+    <section class="part_content">
+      <h1>{{ $t("home.oneStop.title") }}</h1>
+      <p>{{ $t("home.oneStop.p1") }}</p>
+      <p>{{ $t("home.oneStop.p2") }}</p>
+      <p>{{ $t("home.oneStop.p3") }}</p>
       <Image
         src="/images/one_stop_solution.jpg"
+        :alt="$t('alt.oneStop')"
         class="content_image"
-        width="800px"
+        sizes="sm:640px md:800px lg:800px xl:800px xxl:800px"
       />
     </section>
+
     <section class="part_content solution">
-      <h1>成功的解决方案</h1>
+      <h1>{{ $t("home.solutions.title") }}</h1>
       <SolutionTab />
     </section>
-    <section class="logan part_content">
-      <Image src="/images/parallax_home.jpg" class="logan_image" />
-      <p>我们将继续致力于用移动互联网技术感知未来...</p>
+
+    <section class="slogan part_content">
+      <Image
+        src="/images/parallax_home.jpg"
+        :alt="$t('alt.slogan')"
+        class="slogan_image"
+        sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
+      />
+      <p>{{ $t("home.slogan") }}</p>
     </section>
-    <section class="part_content partner">
-      <h1>客户及合作伙伴</h1>
-    </section>
+
+    <CallToAction />
   </div>
 </template>
+
 <script setup lang="ts">
-import Header from "~~/components/Header.vue";
 import Image from "~~/components/Image.vue";
 import SolutionTab from "~~/components/Solution.vue";
-import { ElCarousel, ElCarouselItem, ElAffix } from "element-plus";
-const carouselHeight = ref(
-  process.client ? window.innerHeight + "px" : "400px"
-);
-process.client &&
-  (window.onresize = function () {
-    carouselHeight.value = window.innerHeight + "px";
-  });
+import CallToAction from "~~/components/CallToAction.vue";
+
+definePageMeta({ layout: "home" });
+
+const { t } = useI18n();
+const { site } = useAppConfig();
+const ogImage = "https://www.daxiaoxiang.com/images/og-cover.jpg";
+
+useSeoMeta({
+  title: () => t("seo.home.title"),
+  description: () => t("seo.home.description"),
+  ogTitle: () => t("seo.home.title"),
+  ogDescription: () => t("seo.home.description"),
+  ogType: "website",
+  ogImage,
+  twitterCard: "summary_large_image",
+  twitterTitle: () => t("seo.home.title"),
+  twitterDescription: () => t("seo.home.description"),
+  twitterImage: ogImage,
+});
+
+// Organization 结构化数据。字段全部取自 v1.0 现有页面内容，
+// 未补充成立年份、员工规模、社交账号等站点未提供的信息。
+useHead({
+  script: [
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: site.name,
+        alternateName: "Mighty Elephant",
+        url: site.url,
+        logo: `${site.url}/favicon.ico`,
+        telephone: "+86 185 2159 5792",
+        address: [
+          {
+            "@type": "PostalAddress",
+            addressCountry: "CN",
+            addressLocality: "青岛",
+          },
+          {
+            "@type": "PostalAddress",
+            addressCountry: "CN",
+            addressLocality: "杭州",
+          },
+        ],
+      }),
+    },
+  ],
+});
 </script>
+
 <style lang="scss" scoped>
 .home {
-  height: 100%;
   position: relative;
-  .home_header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
+
+  // 轮播高度由 CSS 控制（替代 v1.0 的 window.innerHeight 计算）：
+  // dvh 在移动端浏览器地址栏收起时表现更好，vh 作为降级
+  :deep(.el-carousel__container) {
+    height: 100vh;
+    height: 100dvh;
   }
+
   .el-carousel__item {
     height: 100%;
-    //q: 让 title_wrapper 居中偏左展示
-    .title_wrapper {
-      position: absolute;
-      margin: 0 auto;
-      top: 50%;
+  }
+
+  .carousel_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .title_wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100%, -50%);
+    width: 45%;
+    text-align: left;
+    color: var(--dx-color-on-image);
+
+    // 移动端改为居中、加宽，避免文案被挤成窄条
+    @include tablet-down {
       left: 50%;
-      transform: translate(-100%, -50%);
-      width: 45%;
-      text-align: left;
-      color: #fff;
-      h2 {
-        font-size: 60px;
-        margin-bottom: 14px;
-      }
-      p {
-        font-size: 16px;
-        line-height: 24px;
-        margin-bottom: 14px;
-      }
+      transform: translate(-50%, -50%);
+      width: 85%;
+      text-align: center;
     }
-  }
-  section.part_content {
-    padding: 120px 0;
-    text-align: center;
-    font-size: 16px;
-    h1 {
-      margin-top: 0;
-      font-size: 36px;
-      color: #34495e;
+
+    h2 {
+      font-size: var(--dx-text-display);
+      line-height: var(--dx-leading-tight);
+      margin: 0 0 var(--dx-space-sm);
     }
+
     p {
-      margin-top: 0;
-      color: #848e97;
-      font-size: 16px;
-      line-height: 26px;
-      margin-bottom: 14px;
+      font-size: var(--dx-text-body);
+      line-height: var(--dx-leading-relaxed);
+      margin: 0 0 var(--dx-space-sm);
     }
   }
-  .part_content.main {
-    padding: 150px 0;
+
+  section.part_content {
+    padding: var(--dx-space-4xl) var(--dx-space-md);
+    text-align: center;
+    font-size: var(--dx-text-body);
+
+    @include mobile {
+      padding: var(--dx-space-2xl) var(--dx-space-md);
+    }
+
     h1 {
-      font-size: 48px;
-      margin-bottom: 54px;
+      margin-top: 0;
+      font-size: var(--dx-text-h2);
+      line-height: var(--dx-leading-tight);
+      color: var(--dx-color-heading);
+    }
+
+    p {
+      max-width: 900px;
+      margin: 0 auto var(--dx-space-sm);
+      color: var(--dx-color-text);
+      font-size: var(--dx-text-body);
+      line-height: var(--dx-leading-relaxed);
     }
   }
-  .logan.part_content {
+
+  .part_content.main {
+    padding-top: var(--dx-space-5xl);
+    padding-bottom: var(--dx-space-5xl);
+
+    @include mobile {
+      padding-top: var(--dx-space-3xl);
+      padding-bottom: var(--dx-space-3xl);
+    }
+
+    h1 {
+      font-size: var(--dx-text-h1);
+      margin-bottom: var(--dx-space-xl);
+    }
+  }
+
+  .slogan.part_content {
     position: relative;
     padding: 0;
     height: 320px;
+
+    @include mobile {
+      height: 220px;
+    }
+
+    .slogan_image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     p {
       position: absolute;
       width: 100%;
+      max-width: none;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 36px;
-      color: #fff;
+      margin: 0;
+      padding: 0 var(--dx-space-md);
+      font-size: var(--dx-text-h2);
+      color: var(--dx-color-on-image);
     }
   }
+
   > section:nth-of-type(even) {
-    padding-top: 60px;
-    background-color: #f2f5f8;
+    padding-top: var(--dx-space-2xl);
+    background-color: var(--dx-color-surface);
   }
+
   .content_image {
-    aspect-ratio: auto 800 / 220;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    :deep(.image-slot) {
-      background-color: #fff;
-    }
+    width: 100%;
+    max-width: 800px;
+    margin: var(--dx-space-md) auto 0;
+    border-radius: var(--dx-radius-md);
   }
 }
 </style>

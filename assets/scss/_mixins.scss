@@ -1,0 +1,22 @@
+// 响应式断点（B4-03）
+// CSS 自定义属性无法用于 @media 条件，故断点以 SCSS 变量形式定义。
+$bp-mobile: 768px;
+$bp-tablet: 1024px;
+
+@mixin mobile {
+  @media (max-width: #{$bp-mobile - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-down {
+  @media (max-width: #{$bp-tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}

@@ -1,0 +1,10 @@
+.nuxt
+.output
+node_modules
+dist
+pnpm-lock.yaml
+public
+
+# Markdown 排除：Prettier 按字符数而非显示宽度对齐表格，
+# 中文表格重排后反而更难读，文档格式由人工维护。
+*.md

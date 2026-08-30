@@ -1,41 +1,67 @@
 <template>
   <div class="contact_wrapper">
-    <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>联系我们</el-breadcrumb-item>
-    </el-breadcrumb>
+    <Breadcrumb :current="$t('breadcrumb.contact')" />
     <div class="content">
       <section class="company">
-        <p>大小象互联网科技（青岛）有限公司</p>
-        <p>电话: +86 185 2159 5792</p>
-        <p>Email: gracezou2829@gmail.com</p>
+        <p class="name">{{ $t("contact.qingdao.name") }}</p>
+        <p>{{ $t("contact.qingdao.phone") }}</p>
+        <p>{{ $t("contact.qingdao.email") }}</p>
       </section>
 
       <section class="company">
-        <p>大小象互联网科技杭州办事处</p>
-        <p>电话: +86 130 6797 9153</p>
-        <p>Email: galiathusi1i@gmail.com</p>
+        <p class="name">{{ $t("contact.hangzhou.name") }}</p>
+        <p>{{ $t("contact.hangzhou.phone") }}</p>
+        <p>{{ $t("contact.hangzhou.email") }}</p>
       </section>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import Breadcrumb from "~~/components/Breadcrumb.vue";
+
+const { t } = useI18n();
+const ogImage = "https://www.daxiaoxiang.com/images/og-cover.jpg";
+
+useSeoMeta({
+  title: () => t("seo.contact.title"),
+  description: () => t("seo.contact.description"),
+  ogTitle: () => t("seo.contact.title"),
+  ogDescription: () => t("seo.contact.description"),
+  ogType: "website",
+  ogImage,
+  twitterCard: "summary_large_image",
+  twitterTitle: () => t("seo.contact.title"),
+  twitterDescription: () => t("seo.contact.description"),
+  twitterImage: ogImage,
+});
+</script>
+
 <style lang="scss" scoped>
 .contact_wrapper {
   .content {
-    padding: 0 50px 90px;
+    padding: 0 var(--dx-space-xl) var(--dx-space-3xl);
+
+    @include mobile {
+      padding: 0 var(--dx-space-md) var(--dx-space-2xl);
+    }
   }
+
   .company {
-    margin-left: 20px;
-    margin-bottom: 26px;
+    margin-bottom: var(--dx-space-md);
+    color: var(--dx-color-text);
+
     p {
       margin: 0;
-      line-height: 26px;
-      font-size: 16px;
+      font-size: var(--dx-text-body);
+      line-height: var(--dx-leading-relaxed);
     }
-    p:nth-child(1) {
-      font-size: 30px;
-      color: #31384d;
-      margin: 13px 0;
+
+    .name {
+      margin: var(--dx-space-xs) 0;
+      font-size: var(--dx-text-h3);
+      line-height: var(--dx-leading-tight);
+      color: var(--dx-color-text-strong);
     }
   }
 }
