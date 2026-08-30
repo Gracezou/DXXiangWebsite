@@ -1,46 +1,45 @@
 <template>
   <nav class="site_header" :aria-label="$t('nav.home')">
-    <NuxtLink :to="localePath('/')" class="brand">
-      {{ $t("site.brand") }}
-    </NuxtLink>
+    <div class="header_inner">
+      <NuxtLink :to="localePath('/')" class="brand">
+        Mighty <span>Elephant</span>
+      </NuxtLink>
 
-    <button
-      class="nav_toggle"
-      type="button"
-      :aria-expanded="menuOpen"
-      aria-controls="site-nav"
-      :aria-label="$t('nav.home')"
-      @click="menuOpen = !menuOpen"
-    >
-      <span class="bar" />
-      <span class="bar" />
-      <span class="bar" />
-    </button>
+      <button
+        class="nav_toggle"
+        type="button"
+        :aria-expanded="menuOpen"
+        aria-controls="site-nav"
+        :aria-label="$t('nav.home')"
+        @click="menuOpen = !menuOpen"
+      >
+        <span class="bar" />
+        <span class="bar" />
+      </button>
 
-    <div id="site-nav" class="nav_panel" :class="{ 'is-open': menuOpen }">
-      <ul class="nav_list">
-        <li v-for="item in navItems" :key="item.to">
+      <div id="site-nav" class="nav_panel" :class="{ 'is-open': menuOpen }">
+        <ul class="nav_list">
+          <li v-for="item in navItems" :key="item.to">
+            <NuxtLink
+              :to="localePath(item.to)"
+              class="nav_link"
+              active-class="is-active"
+            >
+              {{ $t(item.label) }}
+            </NuxtLink>
+          </li>
+        </ul>
+        <div class="lang_switch">
           <NuxtLink
-            :to="localePath(item.to)"
-            class="nav_link"
-            active-class="is-active"
-            @click="menuOpen = false"
+            v-for="l in locales"
+            :key="l.code"
+            :to="switchLocalePath(l.code)"
+            class="lang_item"
+            :class="{ 'is-current': l.code === locale }"
           >
-            {{ $t(item.label) }}
+            {{ l.name }}
           </NuxtLink>
-        </li>
-      </ul>
-      <div class="lang_switch">
-        <NuxtLink
-          v-for="l in locales"
-          :key="l.code"
-          :to="switchLocalePath(l.code)"
-          class="lang_item"
-          :class="{ 'is-current': l.code === locale }"
-          @click="menuOpen = false"
-        >
-          {{ l.name }}
-        </NuxtLink>
+        </div>
       </div>
     </div>
   </nav>
@@ -61,7 +60,6 @@ const navItems = [
   { to: "/contact", label: "nav.contact" },
 ];
 
-// 路由变化时收起移动端抽屉
 watch(
   () => route.fullPath,
   () => {
@@ -72,38 +70,50 @@ watch(
 
 <style lang="scss" scoped>
 .site_header {
+  background-color: var(--dx-color-ink);
+  border-bottom: 1px solid var(--dx-line);
+}
+
+.header_inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 94px;
-  padding: 0 var(--dx-space-xl);
-  background-color: var(--dx-color-brand);
-  color: var(--dx-color-on-brand);
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 var(--dx-space-lg);
+  min-height: 72px;
 
   @include mobile {
-    // 高度改为自适应：抽屉展开时由内容撑高，菜单才会落在 Header 的底色上
-    height: auto;
-    min-height: 64px;
-    padding: 0 var(--dx-space-md);
     flex-wrap: wrap;
+    padding: 0 var(--dx-space-md);
+    min-height: 60px;
   }
 }
 
 .brand {
   display: flex;
   align-items: center;
-  min-height: 64px;
-  color: var(--dx-color-on-brand);
-  font-size: var(--dx-text-lg);
+  min-height: 60px;
+  font-family: var(--dx-font-display);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: var(--dx-tracking-tight);
+  color: var(--dx-color-text);
   text-decoration: none;
   white-space: nowrap;
+
+  span {
+    color: var(--dx-color-accent);
+    margin-left: 0.35em;
+  }
 }
 
 .nav_toggle {
   display: none;
   flex-direction: column;
   justify-content: center;
-  gap: 5px;
+  gap: 6px;
   width: 40px;
   height: 40px;
   padding: 0;
@@ -113,10 +123,10 @@ watch(
 
   .bar {
     display: block;
-    width: 22px;
-    height: 2px;
+    width: 20px;
+    height: 1px;
     margin: 0 auto;
-    background-color: var(--dx-color-on-brand);
+    background-color: var(--dx-color-text);
   }
 
   @include mobile {
@@ -127,14 +137,15 @@ watch(
 .nav_panel {
   display: flex;
   align-items: center;
+  gap: var(--dx-space-lg);
 
   @include mobile {
     display: none;
     width: 100%;
     flex-direction: column;
     align-items: stretch;
+    gap: 0;
     padding-bottom: var(--dx-space-md);
-    background-color: var(--dx-color-brand);
 
     &.is-open {
       display: flex;
@@ -145,6 +156,7 @@ watch(
 .nav_list {
   display: flex;
   align-items: center;
+  gap: var(--dx-space-lg);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -152,34 +164,26 @@ watch(
   @include mobile {
     flex-direction: column;
     align-items: stretch;
+    gap: 0;
   }
 }
 
 .nav_link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  height: 94px;
-  padding: 0 var(--dx-space-md);
-  color: var(--dx-color-on-brand);
-  font-size: var(--dx-text-lg);
+  font-size: var(--dx-text-sm);
+  color: var(--dx-color-muted);
   text-decoration: none;
-  border-bottom: 2px solid transparent;
+  transition: color var(--dx-duration) var(--dx-ease);
 
   &:hover,
   &.is-active {
-    border-bottom-color: var(--dx-color-on-brand);
+    color: var(--dx-color-text);
   }
 
   @include mobile {
-    height: 48px;
-    border-bottom: none;
-    border-left: 2px solid transparent;
-
-    &:hover,
-    &.is-active {
-      border-bottom-color: transparent;
-      border-left-color: var(--dx-color-on-brand);
-    }
+    min-height: 44px;
+    border-bottom: 1px solid var(--dx-line);
   }
 }
 
@@ -187,25 +191,24 @@ watch(
   display: flex;
   align-items: center;
   gap: var(--dx-space-xs);
-  padding-left: var(--dx-space-md);
-  font-size: var(--dx-text-sm);
+  font-family: var(--dx-font-mono);
+  font-size: var(--dx-text-xs);
 
   @include mobile {
-    padding: var(--dx-space-sm) var(--dx-space-md) 0;
+    padding-top: var(--dx-space-md);
   }
 
   .lang_item {
-    color: var(--dx-color-on-brand);
-    opacity: 0.65;
+    color: var(--dx-color-muted);
     text-decoration: none;
+    transition: color var(--dx-duration) var(--dx-ease);
 
     &:hover {
-      opacity: 1;
+      color: var(--dx-color-text);
     }
 
     &.is-current {
-      opacity: 1;
-      font-weight: bold;
+      color: var(--dx-color-accent);
     }
   }
 }

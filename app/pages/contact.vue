@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div>
     <Breadcrumb :current="$t('breadcrumb.contact')" />
 
     <section class="section">
@@ -58,22 +58,28 @@ useSeoMeta({
 .office_grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--dx-space-md);
+  gap: 1px;
+  background-color: var(--dx-line);
+  border: 1px solid var(--dx-line);
 }
 
 .office {
-  padding: var(--dx-space-lg);
-  background-color: var(--dx-color-card);
-  border: 1px solid var(--dx-color-card-border);
-  border-radius: var(--dx-radius-md);
-  box-shadow: var(--dx-shadow-card);
+  padding: var(--dx-space-lg) var(--dx-space-md);
+  background-color: var(--dx-color-ink);
+  transition: background-color var(--dx-duration) var(--dx-ease);
+
+  &:hover {
+    background-color: var(--dx-color-surface);
+  }
 }
 
 .office_name {
   margin: 0 0 var(--dx-space-md);
   font-size: var(--dx-text-h3);
   line-height: var(--dx-leading-tight);
-  color: var(--dx-color-heading);
+  letter-spacing: var(--dx-tracking-tight);
+  font-weight: 600;
+  color: var(--dx-color-text);
 }
 
 dl {
@@ -81,23 +87,28 @@ dl {
   grid-template-columns: auto 1fr;
   gap: var(--dx-space-2xs) var(--dx-space-md);
   margin: 0;
-  font-size: var(--dx-text-body);
-  line-height: var(--dx-leading-relaxed);
+  font-size: var(--dx-text-sm);
 }
 
 dt {
-  color: var(--dx-color-text);
+  font-family: var(--dx-font-mono);
+  font-size: var(--dx-text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dx-color-muted);
+  padding-top: 2px;
 }
 
 dd {
   margin: 0;
-  color: var(--dx-color-text-strong);
+  color: var(--dx-color-text);
   overflow-wrap: anywhere;
 }
 
 .hours_note {
   margin: var(--dx-space-lg) 0 0;
-  font-size: var(--dx-text-sm);
-  color: var(--dx-color-text);
+  font-family: var(--dx-font-mono);
+  font-size: var(--dx-text-xs);
+  color: var(--dx-color-muted);
 }
 </style>

@@ -69,6 +69,6 @@ const failed = ref(false);
   width: 100%;
   aspect-ratio: 16 / 9;
   background: var(--dx-color-surface);
-  color: var(--dx-color-text);
+  color: var(--dx-color-muted);
 }
 </style>

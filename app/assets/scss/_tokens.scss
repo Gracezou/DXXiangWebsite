@@ -1,25 +1,25 @@
 // ============================================================
-// 设计令牌
+// 设计令牌 — v2.1 视觉重构
 //
-// 全站的字体、间距、字号、色彩在此集中定义，页面与组件中不得再出现
-// 裸色值或魔法数字。
+// 方向：深色技术流。全站统一深色，不再深浅交替；层级由 1px 边框与
+// 明度变化表达，不用投影；品牌蓝降为结构色，强调交给琥珀金。
 //
-// v2.1 视觉方向：深色技术流骨架 + 克制专业流的内容排布。
-// 深色区块承载主张与转化（Hero、AI 能力、CTA），浅色区块承载正文阅读。
+// 页面与组件中不得出现裸色值或魔法数字。
 // ============================================================
 
 :root {
   // ---------- 字体 ----------
-  // 不要引入 Google Fonts 等第三方字体 CDN——面向国内访问时不可靠，
-  // 且中文 web font 体积是 MB 级，不适合本站。
-  --dx-font-sans:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-    "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
+  // 英文用自托管的 Sora / IBM Plex（见 _fonts.scss），中文回退系统字体。
+  --dx-font-display:
+    "Sora", -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --dx-font-body:
+    "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --dx-font-mono:
+    "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   // ---------- 间距阶梯 ----------
-  // 以 4px 为基数。v1.0 中散落的 19 个间距值按「就近对齐、位移不超过 8px」
-  // 的原则收敛到以下 10 档。
   --dx-space-2xs: 8px;
   --dx-space-xs: 12px;
   --dx-space-sm: 16px;
@@ -32,63 +32,78 @@
   --dx-space-5xl: 160px;
 
   // ---------- 字号阶梯 ----------
-  --dx-text-display: clamp(36px, 5vw, 60px); // Hero 主标题
-  --dx-text-h1: clamp(28px, 4vw, 48px); // 章节大标题
-  --dx-text-h2: clamp(24px, 3vw, 36px); // 章节标题
-  --dx-text-h3: clamp(20px, 2.4vw, 30px); // 小节标题
-  --dx-text-lg: 18px; // 导航、引导句
-  --dx-text-body: 16px; // 正文
-  --dx-text-sm: 14px; // 辅助文字
-  --dx-text-xs: 13px; // 版权行等最小字号
-  --dx-text-hero: clamp(64px, 10vw, 96px); // 错误页状态码
+  // Hero 拉到 88px 并收紧字距，与 14.5px 的说明文字拉开数量级 ——
+  // 旧版最大只有 60px 且字距默认，是画面显得「平」的主因之一。
+  --dx-text-display: clamp(42px, 7.4vw, 88px);
+  --dx-text-h1: clamp(28px, 4vw, 44px);
+  --dx-text-h2: clamp(24px, 3vw, 34px);
+  --dx-text-h3: clamp(19px, 2vw, 22px);
+  --dx-text-lg: 17px;
+  --dx-text-body: 16px;
+  --dx-text-sm: 14.5px;
+  --dx-text-xs: 12.5px;
+  --dx-text-hero: clamp(64px, 10vw, 104px);
+
+  // ---------- 字距 ----------
+  --dx-tracking-display: -0.035em;
+  --dx-tracking-heading: -0.025em;
+  --dx-tracking-tight: -0.015em;
+  --dx-tracking-label: 0.16em;
 
   // ---------- 行高 ----------
-  --dx-leading-tight: 1.2;
+  --dx-leading-display: 1.04;
+  --dx-leading-tight: 1.14;
   --dx-leading-normal: 1.5;
-  --dx-leading-relaxed: 1.625;
+  --dx-leading-relaxed: 1.65;
 
   // ---------- 色板 ----------
-  // 品牌色阶：以 v1.0 的 #003153 为锚点向两端扩展
-  --dx-color-brand-deep: #001624; // 深空，Hero 与深色区块底色
-  --dx-color-brand: #003153; // 品牌主色（v1.0 沿用，不变）
-  --dx-color-brand-mid: #0a5a8f; // 悬停、边框、次级元素
-  --dx-color-accent: #00a8e8; // 强调：CTA、链接、图标、数据高亮
-  --dx-color-ai: #7c3aed; // AI 专用装饰色块（非文字），仅限 AI 模块
-  --dx-color-ai-on-dark: #a78bfa; // 深色底上的 AI 文字（#7c3aed 对比度仅 3.23，不足 4.5）
+  // 底色带蓝偏，不用纯黑 —— 纯黑在屏幕上显廉价。
+  --dx-color-ink: #06090e; // 页面底色
+  --dx-color-surface: #0c131b; // 抬升面：区块、卡片 hover
+  --dx-color-surface-2: #111a24; // 更高一层
 
-  // 浅色区文字与背景
-  --dx-color-heading: #12283d; // 章节标题
-  --dx-color-text-strong: #31384d; // 强调文字
-  --dx-color-text: #5a6572; // 正文（满足 AA 对比度）
-  --dx-color-surface: #f2f5f8; // 浅色区块背景
-  --dx-color-bg: #ffffff; // 页面底色
-  --dx-color-border: #dfe5ec; // 分隔线
+  --dx-color-brand: #003153; // 品牌蓝（v1.0 沿用）：结构色与氛围光晕
+  --dx-color-accent: #e0a458; // 琥珀金：深蓝的互补色，强调与交互
+  --dx-color-accent-hover: #eeb469;
+  --dx-color-accent-dim: #a8763a; // 弱化标签
+  --dx-color-on-accent: #1a1105; // 琥珀底上的文字
 
-  // 深色区文字
-  --dx-color-on-brand: #e5ddd7; // 品牌色之上的文字（v1.0 沿用）
-  --dx-color-on-dark: #eaf1f7; // 深色背景之上的正文
-  --dx-color-on-dark-muted: #9fb6c8; // 深色背景之上的次要文字
-  --dx-color-on-image: #ffffff; // 覆盖在图片之上的文字
+  --dx-color-text: #e8edf2; // 主文字
+  --dx-color-muted: #7e8b99; // 次要文字：偏底色的色相，不用中性灰
+  --dx-color-heading: #e8edf2;
 
-  // 卡片
-  --dx-color-card: #ffffff;
-  --dx-color-card-border: #e4eaf1;
-  --dx-shadow-card:
-    0 1px 2px rgba(0, 22, 36, 0.06), 0 8px 24px rgba(0, 22, 36, 0.05);
-  --dx-shadow-card-hover:
-    0 2px 4px rgba(0, 22, 36, 0.08), 0 16px 40px rgba(0, 22, 36, 0.1);
+  // 边框系统取代投影
+  --dx-line: rgb(232 237 242 / 9%);
+  --dx-line-strong: rgb(232 237 242 / 16%);
+
+  --dx-color-ai: #a78bfa; // AI 模块专用，克制使用
 
   // ---------- 圆角 ----------
-  --dx-radius-sm: 4px;
-  --dx-radius-md: 10px;
-  --dx-radius-lg: 20px;
+  // 深色技术流基本不用圆角，仅按钮与图片保留极小值。
+  --dx-radius-sm: 3px;
+  --dx-radius-md: 6px;
 
   // ---------- 动效 ----------
   --dx-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --dx-duration: 240ms;
+  --dx-duration: 220ms;
 }
 
-// 尊重系统的「减少动态效果」偏好：关闭所有非必要动效
+// ---------- 中英混排修正 ----------
+// 负字距是为拉丁字母设计的：中文是等宽方块字，同样的收紧会让字挤在一起。
+// 行宽同理 —— ch 基于 "0" 的宽度，中文字符更宽，需要按语言分别给值。
+html[lang="zh-CN"] {
+  --dx-tracking-display: -0.01em;
+  --dx-tracking-heading: -0.008em;
+  --dx-tracking-tight: 0;
+  --dx-measure-display: 15em;
+  --dx-measure-body: 34em;
+}
+
+html[lang="en"] {
+  --dx-measure-display: 13ch;
+  --dx-measure-body: 46ch;
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root {
     --dx-duration: 0ms;

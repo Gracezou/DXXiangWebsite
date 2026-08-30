@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div>
     <Breadcrumb :current="$t('breadcrumb.solution')" />
 
     <section class="section">
@@ -110,11 +110,11 @@ useSeoMeta({
 <style lang="scss" scoped>
 @use "~/assets/scss/page" as *;
 
-// AI 赋能补充说明：以左侧色条与主色区分，标明这是该业务的 AI 维度
+// AI 赋能补充：琥珀左边条标明这是该业务的 AI 维度
 .ai_note {
   margin-top: var(--dx-space-md);
   padding-left: var(--dx-space-sm);
-  border-left: 2px solid var(--dx-color-ai);
-  color: var(--dx-color-text-strong);
+  border-left: 1px solid var(--dx-color-accent);
+  color: var(--dx-color-text);
 }
 </style>

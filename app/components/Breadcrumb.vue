@@ -1,11 +1,13 @@
 <template>
   <nav class="breadcrumb" :aria-label="$t('breadcrumb.home')">
-    <ol>
-      <li>
-        <NuxtLink :to="localePath('/')">{{ $t("breadcrumb.home") }}</NuxtLink>
-      </li>
-      <li aria-current="page">{{ current }}</li>
-    </ol>
+    <div class="container">
+      <ol>
+        <li>
+          <NuxtLink :to="localePath('/')">{{ $t("breadcrumb.home") }}</NuxtLink>
+        </li>
+        <li aria-current="page">{{ current }}</li>
+      </ol>
+    </div>
   </nav>
 </template>
 
@@ -16,7 +18,6 @@ const { t } = useI18n();
 const { site } = useAppConfig();
 const route = useRoute();
 
-// BreadcrumbList 结构化数据（B4-04），配合原生面包屑标记
 useHead(() => ({
   script: [
     {
@@ -45,13 +46,12 @@ useHead(() => ({
 </script>
 
 <style lang="scss" scoped>
-.breadcrumb {
-  padding: var(--dx-space-xl) var(--dx-space-xl) var(--dx-space-lg);
-  font-size: var(--dx-text-sm);
+@use "~/assets/scss/page" as *;
 
-  @include mobile {
-    padding: var(--dx-space-md) var(--dx-space-md) var(--dx-space-sm);
-  }
+.breadcrumb {
+  padding: var(--dx-space-md) 0;
+  font-family: var(--dx-font-mono);
+  font-size: var(--dx-text-xs);
 
   ol {
     display: flex;
@@ -65,15 +65,17 @@ useHead(() => ({
   li + li::before {
     content: "/";
     margin-right: var(--dx-space-2xs);
-    color: var(--dx-color-text);
+    color: var(--dx-color-muted);
+    opacity: 0.6;
   }
 
   a {
-    color: var(--dx-color-brand-mid);
+    color: var(--dx-color-muted);
     text-decoration: none;
+    transition: color var(--dx-duration) var(--dx-ease);
 
     &:hover {
-      text-decoration: underline;
+      color: var(--dx-color-accent);
     }
   }
 

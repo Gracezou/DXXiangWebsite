@@ -191,7 +191,7 @@
     "button": "Get in Touch"
   },
   "hero": {
-    "title": "Technology Solutions Provider",
+    "title": "Technology that lands in real operations",
     "subtitle": "Combining industry experience with comprehensive professional skills to build advanced IT systems, and bringing AI to existing operations to strengthen core competitiveness.",
     "primaryCta": "View Solutions",
     "secondaryCta": "Get in Touch"
@@ -213,5 +213,13 @@
         "desc": "Embedding assistants into websites and applications to handle enquiries, information retrieval and guided workflows."
       }
     }
+  },
+  "facts": {
+    "linesLabel": "Service lines",
+    "linesValue": "Systems · Integration · Data",
+    "industriesLabel": "Industries",
+    "industriesValue": "Banking · Securities · Funds · Insurance · Government",
+    "locationsLabel": "Offices",
+    "locationsValue": "Qingdao · Hangzhou"
   }
 }

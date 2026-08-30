@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div>
     <Breadcrumb :current="$t('breadcrumb.about')" />
 
     <section class="section">

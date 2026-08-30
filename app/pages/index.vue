@@ -1,19 +1,9 @@
 <template>
-  <div class="home">
-    <!-- Hero：单一主张 + 主次 CTA，替代 v2.0 的三屏轮播。
-         轮播会稀释主张且绝大多数访客只看第一屏。 -->
+  <div>
+    <!-- Hero：视觉重量交给排版，不用图库照片铺底 -->
     <section class="hero">
-      <Image
-        src="/images/carousel_1.jpg"
-        :alt="$t('alt.carousel1')"
-        loading="eager"
-        fetchpriority="high"
-        sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
-        width="1280"
-        height="920"
-        class="hero_bg"
-      />
-      <div class="hero_inner">
+      <div class="container">
+        <p class="eyebrow">Technology Solutions Provider</p>
         <h1>{{ $t("hero.title") }}</h1>
         <p class="hero_sub">{{ $t("hero.subtitle") }}</p>
         <div class="hero_actions">
@@ -24,68 +14,62 @@
             {{ $t("hero.secondaryCta") }}
           </NuxtLink>
         </div>
+
+        <!-- 事实条：把原本埋在段落里的信息提到显眼位置 -->
+        <dl class="facts">
+          <div class="fact">
+            <dt>{{ $t("facts.linesLabel") }}</dt>
+            <dd>{{ $t("facts.linesValue") }}</dd>
+          </div>
+          <div class="fact">
+            <dt>{{ $t("facts.industriesLabel") }}</dt>
+            <dd>{{ $t("facts.industriesValue") }}</dd>
+          </div>
+          <div class="fact">
+            <dt>{{ $t("facts.locationsLabel") }}</dt>
+            <dd>{{ $t("facts.locationsValue") }}</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
-    <!-- 服务卡片：承接原轮播三屏的内容，并列呈现而非依次播放 -->
-    <section class="section section--light">
+    <section class="section">
       <div class="container">
-        <header class="section_head">
+        <div class="section_head">
+          <p class="eyebrow">What we do</p>
           <h2>{{ $t("home.servicesTitle") }}</h2>
           <p>{{ $t("home.servicesIntro") }}</p>
-        </header>
+        </div>
+
         <div class="card_grid">
           <ServiceCard
-            :image="'/images/technology_solution_provider.jpg'"
-            :alt="$t('alt.solutionProvider')"
-            :image-width="800"
-            :image-height="200"
+            glyph="grid"
             :title="$t('solution.provider.title')"
             :description="$t('solution.provider.p1')"
+            :ai-note="$t('solution.provider.ai')"
           />
           <ServiceCard
-            :image="'/images/solution_web_app.jpg'"
-            :alt="$t('alt.webApp')"
-            :image-width="800"
-            :image-height="340"
+            glyph="layers"
             :title="$t('solution.webApp.title')"
             :description="$t('solution.webApp.p1')"
+            :ai-note="$t('solution.webApp.ai')"
           />
           <ServiceCard
-            :image="'/images/carousel_3.jpg'"
-            :alt="$t('alt.carousel3')"
-            :image-width="1280"
-            :image-height="920"
+            glyph="flow"
             :title="$t('solution.dataHunter.title')"
             :description="$t('solution.dataHunter.p2')"
+            :ai-note="$t('solution.dataHunter.ai')"
           />
         </div>
       </div>
     </section>
 
-    <!-- AI 赋能：贯穿三条业务线的能力层，深色横切板块 -->
     <AiSection />
 
-    <!-- 网络技术驱动：正文阅读区，浅色 -->
     <section class="section">
-      <div class="container container--narrow">
-        <header class="section_head">
-          <h2>{{ $t("home.tech.title") }}</h2>
-        </header>
-        <div class="prose">
-          <p>{{ $t("home.tech.p1") }}</p>
-          <p>{{ $t("home.tech.p2") }}</p>
-          <p>{{ $t("home.tech.p3") }}</p>
-          <p>{{ $t("home.tech.p4") }}</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 一站式需求解决：图文并置，打破清一色的居中段落节奏 -->
-    <section class="section section--light">
       <div class="container">
         <div class="split">
-          <div class="split_text">
+          <div>
             <h2>{{ $t("home.oneStop.title") }}</h2>
             <p>{{ $t("home.oneStop.p1") }}</p>
             <p>{{ $t("home.oneStop.p2") }}</p>
@@ -105,17 +89,18 @@
       </div>
     </section>
 
-    <!-- slogan：深色横幅 -->
-    <section class="slogan">
-      <Image
-        src="/images/parallax_home.jpg"
-        :alt="$t('alt.slogan')"
-        sizes="sm:640px md:768px lg:1024px xl:1280px xxl:1920px"
-        width="1920"
-        height="814"
-        class="slogan_bg"
-      />
-      <p>{{ $t("home.slogan") }}</p>
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section_head">
+          <h2>{{ $t("home.tech.title") }}</h2>
+        </div>
+        <div class="prose">
+          <p>{{ $t("home.tech.p1") }}</p>
+          <p>{{ $t("home.tech.p2") }}</p>
+          <p>{{ $t("home.tech.p3") }}</p>
+          <p>{{ $t("home.tech.p4") }}</p>
+        </div>
+      </div>
     </section>
 
     <CallToAction />
@@ -125,10 +110,8 @@
 <script setup lang="ts">
 import Image from "~/components/Image.vue";
 import ServiceCard from "~/components/ServiceCard.vue";
-import CallToAction from "~/components/CallToAction.vue";
 import AiSection from "~/components/AiSection.vue";
-
-definePageMeta({ layout: "home" });
+import CallToAction from "~/components/CallToAction.vue";
 
 const { t } = useI18n();
 const { site } = useAppConfig();
@@ -148,8 +131,6 @@ useSeoMeta({
   twitterImage: ogImage,
 });
 
-// Organization 结构化数据。字段全部取自现有页面内容，
-// 未补充成立年份、员工规模、社交账号等站点未提供的信息。
 useHead({
   script: [
     {
@@ -181,214 +162,90 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
-// ---------- Hero ----------
+@use "~/assets/scss/page" as *;
+
 .hero {
-  position: relative;
-  display: flex;
-  align-items: center;
-  min-height: 100vh;
-  min-height: 100dvh;
-  overflow: hidden;
-  background-color: var(--dx-color-brand-deep);
-}
-
-.hero_bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.42;
-}
-
-.hero_inner {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--dx-space-3xl) var(--dx-space-xl);
+  padding: var(--dx-space-4xl) 0 var(--dx-space-3xl);
 
   @include mobile {
-    padding: var(--dx-space-2xl) var(--dx-space-md);
+    padding: var(--dx-space-2xl) 0 var(--dx-space-xl);
   }
 
   h1 {
-    max-width: 16em;
+    max-width: var(--dx-measure-display);
     margin: 0 0 var(--dx-space-md);
     font-size: var(--dx-text-display);
-    line-height: var(--dx-leading-tight);
-    color: var(--dx-color-on-image);
+    line-height: var(--dx-leading-display);
+    letter-spacing: var(--dx-tracking-display);
+    font-weight: 600;
   }
 }
 
 .hero_sub {
-  max-width: 34em;
+  max-width: var(--dx-measure-body);
   margin: 0 0 var(--dx-space-xl);
   font-size: var(--dx-text-lg);
   line-height: var(--dx-leading-relaxed);
-  color: var(--dx-color-on-dark);
+  color: var(--dx-color-muted);
 }
 
 .hero_actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--dx-space-sm);
+  gap: var(--dx-space-xs);
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--dx-space-xs) var(--dx-space-lg);
-  font-size: var(--dx-text-body);
-  font-weight: 500;
-  border-radius: var(--dx-radius-sm);
-  text-decoration: none;
-  transition: all var(--dx-duration) var(--dx-ease);
-
-  &--primary {
-    color: var(--dx-color-brand-deep);
-    background-color: var(--dx-color-accent);
-
-    &:hover {
-      filter: brightness(1.08);
-    }
-  }
-
-  &--ghost {
-    color: var(--dx-color-on-image);
-    border: 1px solid rgb(255 255 255 / 45%);
-
-    &:hover {
-      background-color: rgb(255 255 255 / 12%);
-      border-color: var(--dx-color-on-image);
-    }
-  }
-}
-
-// ---------- 通用区块 ----------
-.section {
-  padding: var(--dx-space-4xl) 0;
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  margin: var(--dx-space-3xl) 0 0;
+  border-top: 1px solid var(--dx-line);
 
   @include mobile {
-    padding: var(--dx-space-2xl) 0;
-  }
-
-  &--light {
-    background-color: var(--dx-color-surface);
+    margin-top: var(--dx-space-xl);
   }
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--dx-space-xl);
+.fact {
+  flex: 1 1 200px;
+  padding: var(--dx-space-md) var(--dx-space-md) var(--dx-space-md) 0;
+  border-right: 1px solid var(--dx-line);
+
+  &:last-child {
+    border-right: none;
+  }
 
   @include mobile {
-    padding: 0 var(--dx-space-md);
+    flex-basis: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--dx-line);
+    padding-right: 0;
   }
 
-  &--narrow {
-    max-width: 820px;
-  }
-}
-
-.section_head {
-  margin-bottom: var(--dx-space-xl);
-
-  h2 {
-    margin: 0 0 var(--dx-space-xs);
-    font-size: var(--dx-text-h1);
-    line-height: var(--dx-leading-tight);
-    color: var(--dx-color-heading);
+  dt {
+    margin-bottom: var(--dx-space-2xs);
+    font-family: var(--dx-font-mono);
+    font-size: var(--dx-text-xs);
+    letter-spacing: var(--dx-tracking-label);
+    text-transform: uppercase;
+    color: var(--dx-color-muted);
   }
 
-  p {
-    max-width: 46em;
+  dd {
     margin: 0;
+    font-family: var(--dx-font-display);
     font-size: var(--dx-text-lg);
-    line-height: var(--dx-leading-relaxed);
+    letter-spacing: var(--dx-tracking-tight);
     color: var(--dx-color-text);
   }
 }
 
+// 卡片网格：共用 1px 分隔线，不用独立投影
 .card_grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--dx-space-md);
-}
-
-.prose p {
-  margin: 0 0 var(--dx-space-sm);
-  font-size: var(--dx-text-body);
-  line-height: var(--dx-leading-relaxed);
-  color: var(--dx-color-text);
-}
-
-// ---------- 图文并置 ----------
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: var(--dx-space-2xl);
-
-  @include tablet-down {
-    grid-template-columns: 1fr;
-    gap: var(--dx-space-md);
-  }
-
-  h2 {
-    margin: 0 0 var(--dx-space-md);
-    font-size: var(--dx-text-h1);
-    line-height: var(--dx-leading-tight);
-    color: var(--dx-color-heading);
-  }
-
-  p {
-    margin: 0 0 var(--dx-space-sm);
-    font-size: var(--dx-text-body);
-    line-height: var(--dx-leading-relaxed);
-    color: var(--dx-color-text);
-  }
-}
-
-.split_img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--dx-radius-md);
-}
-
-// ---------- slogan 横幅 ----------
-.slogan {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 320px;
-  overflow: hidden;
-  background-color: var(--dx-color-brand-deep);
-
-  @include mobile {
-    height: 220px;
-  }
-
-  p {
-    position: relative;
-    max-width: 24em;
-    margin: 0;
-    padding: 0 var(--dx-space-md);
-    font-size: var(--dx-text-h2);
-    line-height: var(--dx-leading-tight);
-    text-align: center;
-    color: var(--dx-color-on-image);
-  }
-}
-
-.slogan_bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.38;
+  gap: 1px;
+  background-color: var(--dx-line);
+  border: 1px solid var(--dx-line);
 }
 </style>

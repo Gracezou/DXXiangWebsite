@@ -191,7 +191,7 @@
     "button": "联系我们获取方案"
   },
   "hero": {
-    "title": "技术解决方案提供商",
+    "title": "把技术能力，落进真实的业务流程",
     "subtitle": "凭借行业经验和全方位的专业技能，帮助客户构建先进的 IT 系统；以 AI 赋能既有业务，快速增强核心竞争力。",
     "primaryCta": "查看解决方案",
     "secondaryCta": "联系我们"
@@ -213,5 +213,13 @@
         "desc": "在网站与应用中嵌入智能助手，承接咨询应答、信息检索与操作引导。"
       }
     }
+  },
+  "facts": {
+    "linesLabel": "业务线",
+    "linesValue": "系统建设 · 应用集成 · 数据获取",
+    "industriesLabel": "服务行业",
+    "industriesValue": "银行 · 证券 · 基金 · 保险 · 政府",
+    "locationsLabel": "办公地点",
+    "locationsValue": "青岛 · 杭州"
   }
 }

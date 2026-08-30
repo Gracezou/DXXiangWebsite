@@ -1,9 +1,13 @@
 <template>
   <section class="cta">
-    <p class="cta_title">{{ $t("cta.title") }}</p>
-    <NuxtLink :to="localePath('/contact')" class="cta_button">
-      {{ $t("cta.button") }}
-    </NuxtLink>
+    <div class="container">
+      <div class="cta_inner">
+        <p class="cta_title">{{ $t("cta.title") }}</p>
+        <NuxtLink :to="localePath('/contact')" class="btn btn--primary">
+          {{ $t("cta.button") }}
+        </NuxtLink>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -12,42 +16,33 @@ const localePath = useLocalePath();
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/scss/page" as *;
+
 .cta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--dx-space-md);
-  padding: var(--dx-space-3xl) var(--dx-space-md);
-  text-align: center;
-  background-color: var(--dx-color-brand-deep);
+  padding: var(--dx-space-3xl) 0;
+  border-top: 1px solid var(--dx-line);
 
   @include mobile {
-    padding: var(--dx-space-2xl) var(--dx-space-md);
+    padding: var(--dx-space-2xl) 0;
   }
+}
+
+.cta_inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--dx-space-md);
 }
 
 .cta_title {
   margin: 0;
-  max-width: 20em;
+  max-width: 24ch;
+  font-family: var(--dx-font-display);
   font-size: var(--dx-text-h2);
   line-height: var(--dx-leading-tight);
-  color: var(--dx-color-on-image);
-}
-
-.cta_button {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--dx-space-xs) var(--dx-space-lg);
-  font-size: var(--dx-text-body);
-  font-weight: 500;
-  color: var(--dx-color-brand-deep);
-  background-color: var(--dx-color-accent);
-  border-radius: var(--dx-radius-sm);
-  text-decoration: none;
-  transition: filter var(--dx-duration) var(--dx-ease);
-
-  &:hover {
-    filter: brightness(1.08);
-  }
+  letter-spacing: var(--dx-tracking-heading);
+  font-weight: 600;
+  color: var(--dx-color-text);
 }
 </style>

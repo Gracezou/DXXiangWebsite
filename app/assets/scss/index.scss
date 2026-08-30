@@ -1,7 +1,6 @@
+@use "./fonts";
 @use "./tokens";
 
-// 现代盒模型：width 含 padding 与 border。
-// v1.0 未设置，导致 width:100% + padding 的元素撑出横向滚动条。
 *,
 *::before,
 *::after {
@@ -13,13 +12,28 @@ body,
 #app {
   margin: 0;
   padding: 0;
-  font-family: var(--dx-font-sans);
 }
 
 body {
-  // v1.0 未声明底色，浏览器处于暗色模式时页面底色会渲染成黑色
-  background-color: var(--dx-color-bg);
+  background-color: var(--dx-color-ink);
   color: var(--dx-color-text);
+  font-family: var(--dx-font-body);
   font-size: var(--dx-text-body);
-  line-height: var(--dx-leading-normal);
+  line-height: var(--dx-leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--dx-font-display);
+  text-wrap: balance;
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--dx-color-accent);
+  outline-offset: 3px;
 }

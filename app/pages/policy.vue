@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div>
     <Breadcrumb :current="$t('breadcrumb.policy')" />
 
     <section class="section">
@@ -50,22 +50,7 @@ h1 {
   margin: 0 0 var(--dx-space-lg);
   font-size: var(--dx-text-h1);
   line-height: var(--dx-leading-tight);
-  color: var(--dx-color-heading);
-}
-
-.prose {
-  h2 {
-    margin: var(--dx-space-xl) 0 var(--dx-space-xs);
-    font-size: var(--dx-text-h3);
-    line-height: var(--dx-leading-tight);
-    color: var(--dx-color-heading);
-  }
-
-  p {
-    margin: 0 0 var(--dx-space-sm);
-    font-size: var(--dx-text-body);
-    line-height: var(--dx-leading-relaxed);
-    color: var(--dx-color-text);
-  }
+  letter-spacing: var(--dx-tracking-heading);
+  font-weight: 600;
 }
 </style>

@@ -35,15 +35,25 @@ import Image from "~/components/Image.vue";
 .showcase {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--dx-space-md);
+  gap: 1px;
+  background-color: var(--dx-line);
+  border: 1px solid var(--dx-line);
 }
 
 .showcase_img {
+  display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 10 / 8;
   object-fit: cover;
-  border-radius: var(--dx-radius-md);
-  border: 1px solid var(--dx-color-card-border);
+  // 图库照片去饱和压暗，作为纹理而非主视觉
+  filter: grayscale(0.72) brightness(0.8) contrast(1.06);
+  mix-blend-mode: luminosity;
+  opacity: 0.88;
+  transition: opacity var(--dx-duration) var(--dx-ease);
+
+  &:hover {
+    opacity: 1;
+  }
 }
 </style>

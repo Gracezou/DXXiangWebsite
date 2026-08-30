@@ -1,41 +1,40 @@
 <template>
-  <footer class="footer_wrapper">
-    <div class="content">
-      <div class="content_main">
-        <div class="policy_box">
-          <p>{{ $t("footer.policyNote") }}</p>
-          <NuxtLink
-            :to="localePath('/policy')"
-            class="footer_link footer_link--info"
-          >
-            {{ $t("footer.policyLink") }}
-          </NuxtLink>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer_main">
+        <div class="footer_brand">
+          <p class="brand_mark">Mighty <span>Elephant</span></p>
+          <p class="brand_note">{{ $t("footer.policyNote") }}</p>
         </div>
-        <div class="menu_box">
-          <p class="box_title">{{ $t("footer.sitemap") }}</p>
-          <NuxtLink :to="localePath('/')" class="footer_link">
-            {{ $t("nav.home") }}
-          </NuxtLink>
-          <NuxtLink :to="localePath('/about')" class="footer_link">
-            {{ $t("nav.about") }}
-          </NuxtLink>
-          <NuxtLink :to="localePath('/solution')" class="footer_link">
+
+        <nav class="footer_nav" :aria-label="$t('footer.sitemap')">
+          <p class="col_title">{{ $t("footer.sitemap") }}</p>
+          <NuxtLink :to="localePath('/')">{{ $t("nav.home") }}</NuxtLink>
+          <NuxtLink :to="localePath('/about')">{{ $t("nav.about") }}</NuxtLink>
+          <NuxtLink :to="localePath('/solution')">
             {{ $t("nav.solution") }}
           </NuxtLink>
-          <NuxtLink :to="localePath('/contact')" class="footer_link">
+          <NuxtLink :to="localePath('/contact')">
             {{ $t("nav.contact") }}
           </NuxtLink>
-        </div>
-        <div class="contact_box">
+          <NuxtLink :to="localePath('/policy')">
+            {{ $t("footer.policyLink") }}
+          </NuxtLink>
+        </nav>
+
+        <div class="footer_col">
+          <p class="col_title">{{ $t("nav.contact") }}</p>
           <p class="phone">{{ $t("footer.phone") }}</p>
-          <p class="hours">{{ $t("footer.hours") }}</p>
-          <p class="address">{{ $t("footer.address") }}</p>
+          <p>{{ $t("footer.hours") }}</p>
+          <p>{{ $t("footer.address") }}</p>
         </div>
-        <div class="app_box">
-          <p class="box_title">{{ $t("footer.appTitle") }}</p>
+
+        <div class="footer_col">
+          <p class="col_title">{{ $t("footer.appTitle") }}</p>
           <p>{{ $t("footer.appDesc") }}</p>
         </div>
       </div>
+
       <div class="copyright">
         <span>© {{ year }} {{ $t("site.company") }}</span>
         <a
@@ -66,120 +65,111 @@ const year = new Date().getFullYear();
 </script>
 
 <style lang="scss" scoped>
-.footer_wrapper {
-  padding-top: var(--dx-space-3xl);
-  background-color: var(--dx-color-brand);
-  color: var(--dx-color-text);
-  font-size: var(--dx-text-sm);
+@use "~/assets/scss/page" as *;
+
+.footer {
+  padding: var(--dx-space-3xl) 0 var(--dx-space-xl);
+  border-top: 1px solid var(--dx-line);
+  background-color: var(--dx-color-ink);
 
   @include mobile {
-    padding-top: var(--dx-space-xl);
-  }
-
-  .content {
-    background-color: var(--dx-color-surface);
-    padding: var(--dx-space-2xl) var(--dx-space-xl) var(--dx-space-lg);
-
-    @include mobile {
-      padding: var(--dx-space-lg) var(--dx-space-md) var(--dx-space-md);
-    }
-
-    p {
-      margin-top: 0;
-    }
+    padding: var(--dx-space-2xl) 0 var(--dx-space-lg);
   }
 }
 
-.content_main {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--dx-space-2xl);
+.footer_main {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: var(--dx-space-xl);
 
-  @include mobile {
-    flex-direction: column;
+  @include tablet-down {
+    grid-template-columns: 1fr 1fr;
     gap: var(--dx-space-lg);
   }
-}
-
-.policy_box {
-  flex: 1 1 240px;
-  max-width: 320px;
 
   @include mobile {
-    max-width: none;
+    grid-template-columns: 1fr;
   }
 }
 
-.menu_box {
-  flex: 0 0 auto;
+.brand_mark {
+  margin: 0 0 var(--dx-space-xs);
+  font-family: var(--dx-font-display);
+  font-size: var(--dx-text-lg);
+  font-weight: 600;
+  letter-spacing: var(--dx-tracking-tight);
+  color: var(--dx-color-text);
+
+  span {
+    color: var(--dx-color-accent);
+  }
+}
+
+.brand_note {
+  margin: 0;
+  max-width: 32ch;
+  font-size: var(--dx-text-sm);
+  color: var(--dx-color-muted);
+}
+
+.col_title {
+  margin: 0 0 var(--dx-space-sm);
+  font-family: var(--dx-font-mono);
+  font-size: var(--dx-text-xs);
+  letter-spacing: var(--dx-tracking-label);
+  text-transform: uppercase;
+  color: var(--dx-color-muted);
+}
+
+.footer_nav {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  line-height: var(--dx-leading-relaxed);
+  gap: var(--dx-space-2xs);
+
+  a {
+    font-size: var(--dx-text-sm);
+    color: var(--dx-color-muted);
+    text-decoration: none;
+    transition: color var(--dx-duration) var(--dx-ease);
+
+    &:hover {
+      color: var(--dx-color-accent);
+    }
+  }
 }
 
-.contact_box {
-  flex: 1 1 240px;
+.footer_col {
+  p {
+    margin: 0 0 var(--dx-space-2xs);
+    font-size: var(--dx-text-sm);
+    color: var(--dx-color-muted);
+  }
 
   .phone {
-    font-size: var(--dx-text-h3);
-    font-weight: bold;
-    color: var(--dx-color-text-strong);
-    margin-bottom: var(--dx-space-2xs);
-  }
-  .hours {
-    margin-bottom: var(--dx-space-md);
-  }
-  .address {
+    font-family: var(--dx-font-mono);
     font-size: var(--dx-text-body);
-    font-weight: bold;
-    color: var(--dx-color-text-strong);
-  }
-}
-
-.app_box {
-  flex: 1 1 200px;
-  line-height: var(--dx-leading-relaxed);
-}
-
-.box_title {
-  font-size: var(--dx-text-body);
-  font-weight: bold;
-  color: var(--dx-color-text-strong);
-}
-
-.footer_link {
-  display: inline-flex;
-  align-items: center;
-  color: var(--dx-color-brand);
-  font-size: var(--dx-text-sm);
-  font-weight: 500;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-
-  &--info {
     color: var(--dx-color-text);
   }
 }
 
 .copyright {
-  margin-top: var(--dx-space-lg);
-  padding-top: var(--dx-space-md);
-  border-top: 1px solid var(--dx-color-border);
   display: flex;
   flex-wrap: wrap;
   gap: var(--dx-space-2xs) var(--dx-space-md);
+  margin-top: var(--dx-space-2xl);
+  padding-top: var(--dx-space-md);
+  border-top: 1px solid var(--dx-line);
+  font-family: var(--dx-font-mono);
   font-size: var(--dx-text-xs);
+  color: var(--dx-color-muted);
 
   a {
     color: inherit;
     text-decoration: none;
 
     &:hover {
-      color: var(--dx-color-text-strong);
+      color: var(--dx-color-accent);
     }
   }
 }

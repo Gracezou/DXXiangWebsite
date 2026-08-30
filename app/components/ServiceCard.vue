@@ -1,81 +1,158 @@
 <template>
-  <article class="service_card">
-    <div class="media">
-      <Image
-        :src="image"
-        :alt="alt"
-        :width="imageWidth"
-        :height="imageHeight"
-        sizes="sm:640px md:400px lg:440px xl:480px xxl:520px"
-        class="media_img"
-      />
-    </div>
-    <div class="body">
-      <h3>{{ title }}</h3>
-      <p>{{ description }}</p>
-    </div>
+  <article class="card">
+    <!-- 用几何图形取代图库照片：不受原图比例限制，也不依赖素材质量 -->
+    <svg
+      class="glyph"
+      width="52"
+      height="52"
+      viewBox="0 0 52 52"
+      fill="none"
+      aria-hidden="true"
+    >
+      <template v-if="glyph === 'grid'">
+        <rect
+          x="1"
+          y="1"
+          width="20"
+          height="20"
+          stroke="currentColor"
+          stroke-width="1.2"
+        />
+        <rect
+          x="31"
+          y="1"
+          width="20"
+          height="20"
+          stroke="var(--dx-color-muted)"
+          stroke-width="1.2"
+        />
+        <rect
+          x="1"
+          y="31"
+          width="20"
+          height="20"
+          stroke="var(--dx-color-muted)"
+          stroke-width="1.2"
+        />
+        <rect
+          x="31"
+          y="31"
+          width="20"
+          height="20"
+          stroke="var(--dx-color-muted)"
+          stroke-width="1.2"
+        />
+        <path
+          d="M21 11h10M11 21v10M41 21v10M21 41h10"
+          stroke="currentColor"
+          stroke-width="1.2"
+        />
+      </template>
+      <template v-else-if="glyph === 'layers'">
+        <rect
+          x="1"
+          y="7"
+          width="30"
+          height="38"
+          stroke="var(--dx-color-muted)"
+          stroke-width="1.2"
+        />
+        <rect
+          x="19"
+          y="16"
+          width="32"
+          height="24"
+          stroke="currentColor"
+          stroke-width="1.2"
+        />
+        <path d="M19 24h32" stroke="currentColor" stroke-width="1.2" />
+        <circle cx="24" cy="20" r="1.4" fill="currentColor" />
+      </template>
+      <template v-else>
+        <path
+          d="M2 40C10 40 12 12 22 12s12 28 22 28"
+          stroke="currentColor"
+          stroke-width="1.2"
+        />
+        <path
+          d="M2 48C10 48 12 26 22 26s12 22 22 22"
+          stroke="var(--dx-color-muted)"
+          stroke-width="1.2"
+        />
+        <circle
+          cx="22"
+          cy="12"
+          r="2.6"
+          stroke="currentColor"
+          stroke-width="1.2"
+        />
+        <circle
+          cx="44"
+          cy="40"
+          r="2.6"
+          stroke="var(--dx-color-muted)"
+          stroke-width="1.2"
+        />
+      </template>
+    </svg>
+
+    <h3>{{ title }}</h3>
+    <p>{{ description }}</p>
+    <span v-if="aiNote" class="ai_tag">{{ aiNote }}</span>
   </article>
 </template>
 
 <script setup lang="ts">
-import Image from "~/components/Image.vue";
-
 defineProps<{
-  image: string;
-  alt: string;
-  imageWidth: number;
-  imageHeight: number;
+  glyph: "grid" | "layers" | "flow";
   title: string;
   description: string;
+  aiNote?: string;
 }>();
 </script>
 
 <style lang="scss" scoped>
-.service_card {
+.card {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  background-color: var(--dx-color-card);
-  border: 1px solid var(--dx-color-card-border);
-  border-radius: var(--dx-radius-md);
-  box-shadow: var(--dx-shadow-card);
-  transition:
-    box-shadow var(--dx-duration) var(--dx-ease),
-    transform var(--dx-duration) var(--dx-ease);
+  padding: var(--dx-space-lg) var(--dx-space-md) var(--dx-space-xl);
+  background-color: var(--dx-color-ink);
+  transition: background-color var(--dx-duration) var(--dx-ease);
 
   &:hover {
-    box-shadow: var(--dx-shadow-card-hover);
-    transform: translateY(-2px);
+    background-color: var(--dx-color-surface);
   }
 }
 
-.media {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background-color: var(--dx-color-surface);
+.glyph {
+  display: block;
+  margin-bottom: var(--dx-space-md);
+  color: var(--dx-color-accent);
 }
 
-.media_img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+h3 {
+  margin: 0 0 var(--dx-space-xs);
+  font-size: var(--dx-text-h3);
+  line-height: var(--dx-leading-tight);
+  letter-spacing: var(--dx-tracking-tight);
+  font-weight: 600;
 }
 
-.body {
-  padding: var(--dx-space-md);
+p {
+  margin: 0;
+  font-size: var(--dx-text-sm);
+  line-height: var(--dx-leading-relaxed);
+  color: var(--dx-color-muted);
+}
 
-  h3 {
-    margin: 0 0 var(--dx-space-2xs);
-    font-size: var(--dx-text-h3);
-    line-height: var(--dx-leading-tight);
-    color: var(--dx-color-heading);
-  }
-
-  p {
-    margin: 0;
-    font-size: var(--dx-text-body);
-    line-height: var(--dx-leading-relaxed);
-    color: var(--dx-color-text);
-  }
+.ai_tag {
+  align-self: flex-start;
+  margin-top: var(--dx-space-md);
+  padding-bottom: 2px;
+  font-family: var(--dx-font-mono);
+  font-size: var(--dx-text-xs);
+  letter-spacing: 0.08em;
+  color: var(--dx-color-accent-dim);
+  border-bottom: 1px solid rgb(224 164 88 / 28%);
 }
 </style>

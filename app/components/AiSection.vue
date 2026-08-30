@@ -1,116 +1,120 @@
 <template>
   <section class="ai">
-    <div class="ai_container">
-      <header class="ai_head">
-        <p class="ai_eyebrow">AI</p>
-        <h2>{{ $t("ai.title") }}</h2>
-        <p class="ai_intro">{{ $t("ai.intro") }}</p>
-      </header>
+    <div class="container">
+      <div class="ai_grid">
+        <div class="ai_head">
+          <p class="eyebrow">AI</p>
+          <h2>{{ $t("ai.title") }}</h2>
+          <p class="ai_lead">{{ $t("ai.intro") }}</p>
+        </div>
 
-      <ul class="ai_list">
-        <li v-for="key in itemKeys" :key="key" class="ai_item">
-          <span class="ai_marker" aria-hidden="true" />
-          <h3>{{ $t(`ai.items.${key}.title`) }}</h3>
-          <p>{{ $t(`ai.items.${key}.desc`) }}</p>
-        </li>
-      </ul>
+        <ul class="ai_list">
+          <li v-for="key in itemKeys" :key="key" class="ai_item">
+            <h3>{{ $t(`ai.items.${key}.title`) }}</h3>
+            <p>{{ $t(`ai.items.${key}.desc`) }}</p>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 // AI 是贯穿三条业务线的能力层，不是独立业务，故以横切板块呈现。
-// 本站无 AI 相关图片素材，此处刻意采用纯版式处理而非借用无关配图。
 const itemKeys = ["app", "engineering", "assistant"] as const;
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/scss/page" as *;
+
 .ai {
-  padding: var(--dx-space-4xl) 0;
-  background-color: var(--dx-color-brand-deep);
-  // 极淡的紫色辉光，是全站唯一使用 AI 专用色的地方
-  background-image: radial-gradient(
-    ellipse 80% 60% at 50% 0%,
-    rgb(124 58 237 / 22%),
-    transparent 70%
-  );
+  padding: var(--dx-space-3xl) 0;
+  border-top: 1px solid var(--dx-line);
+  // 品牌蓝作氛围光晕，是它在新版中的主要角色
+  background:
+    radial-gradient(
+      ellipse 70% 130% at 12% 0%,
+      rgb(0 49 83 / 55%),
+      transparent 68%
+    ),
+    var(--dx-color-surface);
 
   @include mobile {
     padding: var(--dx-space-2xl) 0;
   }
 }
 
-.ai_container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--dx-space-xl);
+.ai_grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: var(--dx-space-2xl);
+  align-items: start;
 
-  @include mobile {
-    padding: 0 var(--dx-space-md);
+  @include tablet-down {
+    grid-template-columns: 1fr;
+    gap: var(--dx-space-xl);
   }
 }
 
 .ai_head {
-  max-width: 46em;
-  margin-bottom: var(--dx-space-2xl);
-
   h2 {
     margin: 0 0 var(--dx-space-sm);
     font-size: var(--dx-text-h1);
     line-height: var(--dx-leading-tight);
-    color: var(--dx-color-on-image);
+    letter-spacing: var(--dx-tracking-heading);
+    font-weight: 600;
   }
 }
 
-.ai_eyebrow {
-  margin: 0 0 var(--dx-space-xs);
-  font-size: var(--dx-text-sm);
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  // 用提亮版：#7c3aed 在深色底上对比度仅 3.23，14px 文字需 ≥4.5
-  color: var(--dx-color-ai-on-dark);
-}
-
-.ai_intro {
+.ai_lead {
   margin: 0;
+  max-width: 40ch;
   font-size: var(--dx-text-lg);
   line-height: var(--dx-leading-relaxed);
-  color: var(--dx-color-on-dark);
+  color: var(--dx-color-text);
+  opacity: 0.9;
 }
 
 .ai_list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--dx-space-xl);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .ai_item {
-  padding-top: var(--dx-space-md);
-  border-top: 1px solid rgb(255 255 255 / 16%);
+  padding: var(--dx-space-md) 0;
+  border-top: 1px solid var(--dx-line);
+
+  &:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
 
   h3 {
+    display: flex;
+    align-items: center;
+    gap: var(--dx-space-2xs);
     margin: 0 0 var(--dx-space-2xs);
     font-size: var(--dx-text-h3);
     line-height: var(--dx-leading-tight);
-    color: var(--dx-color-on-image);
+    letter-spacing: var(--dx-tracking-tight);
+    font-weight: 600;
+
+    // 琥珀短线作标记，取代原来的紫色色条
+    &::before {
+      content: "";
+      flex: none;
+      width: 18px;
+      height: 1px;
+      background-color: var(--dx-color-accent);
+    }
   }
 
   p {
     margin: 0;
-    font-size: var(--dx-text-body);
+    font-size: var(--dx-text-sm);
     line-height: var(--dx-leading-relaxed);
-    color: var(--dx-color-on-dark-muted);
+    color: var(--dx-color-muted);
   }
-}
-
-.ai_marker {
-  display: block;
-  width: 32px;
-  height: 2px;
-  margin-bottom: var(--dx-space-md);
-  background-color: var(--dx-color-ai);
 }
 </style>
