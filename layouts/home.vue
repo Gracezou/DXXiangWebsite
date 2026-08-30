@@ -15,7 +15,7 @@
     padding: 0;
   }
   .el-footer {
-    --el-footer-height: 380px;
+    --el-footer-height: auto;
     --el-footer-padding: 0;
   }
 }
