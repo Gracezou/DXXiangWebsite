@@ -4,7 +4,8 @@
 
 | 文件 | 用途 |
 | --- | --- |
-| `nginx.conf` | 站点配置：压缩、缓存、301、404、安全头 |
+| `nginx.conf` | 独立 Nginx 的完整站点配置（含 HTTPS、裸域跳转） |
+| `bt-nginx-site.conf` | **宝塔面板专用**：保留宝塔的标记注释与 include，可直接全文替换 |
 | `deploy.sh` | 构建 → 上传 → 原子切换 → 冒烟检查 |
 | `rollback.sh` | 回滚到上一个发布版本 |
 
