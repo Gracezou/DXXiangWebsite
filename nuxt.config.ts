@@ -27,7 +27,11 @@ export default defineNuxtConfig({
         { name: "viewport", content: "width=device-width, initial-scale=1" },
       ],
       link: [
-        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        // 图标按现代浏览器的选取顺序声明：
+        // 支持 SVG 的优先用矢量（任意尺寸都清晰），其余回退到多尺寸 ico。
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico", sizes: "any" },
+        { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
         // 预加载首屏关键字体：Hero 标题与正文。其余字重按需加载。
         {
           rel: "preload",

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Mighty Elephant">
+  <!--
+    品牌标记：琥珀金底 + 深色 M。
+    中峰下探至 0.72 高度，在较大尺寸下形成象鼻的意象（Mighty Elephant / 大小象）；
+    16px 下细节自然收敛为一个清晰的 M。
+    配色取自站点令牌 dx-color-accent (#E0A458) 与 dx-color-ink (#06090E)。
+    注意：SVG 注释中不可出现连续两个连字符，会导致 XML 解析失败。
+  -->
+  <rect width="512" height="512" rx="102" fill="#E0A458"/>
+  <path d="M102 389V123l154 246 154-246v266"
+        fill="none" stroke="#06090E" stroke-width="79"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
