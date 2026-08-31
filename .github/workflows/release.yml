@@ -16,7 +16,11 @@ on:
   workflow_dispatch:
     inputs:
       ref:
-        description: "要构建的分支或标签（留空则用当前分支）"
+        description: "要构建的分支或标签，例如 v2.1.1（留空则用当前分支）"
+        required: false
+        default: ""
+      upload_to:
+        description: "构建完成后上传到哪个 Release 的标签，例如 v2.1.1（留空则只产出 Actions Artifact）"
         required: false
         default: ""
 
@@ -29,6 +33,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: 打印触发上下文
+        run: |
+          echo "事件类型  : ${{ github.event_name }}"
+          echo "ref       : ${{ github.ref }}"
+          echo "release tag: ${{ github.event.release.tag_name }}"
+          echo "手动 ref  : ${{ github.event.inputs.ref }}"
+          echo "上传目标  : ${{ github.event.inputs.upload_to }}"
+
       - name: 检出代码
         uses: actions/checkout@v4
         with:
@@ -93,10 +105,14 @@ jobs:
             ${{ steps.pack.outputs.name }}.sha256
           retention-days: 90
 
+      # 两种情况都能把产物送到 Release：
+      #   - release 事件：用事件里的 tag
+      #   - 手动触发：用 upload_to 指定的 tag（留空则只留 Actions Artifact）
       - name: 附加到 Release
-        if: github.event_name == 'release'
+        if: github.event_name == 'release' || github.event.inputs.upload_to != ''
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.event.release.tag_name || github.event.inputs.upload_to }}
           files: |
             ${{ steps.pack.outputs.name }}
             ${{ steps.pack.outputs.name }}.sha256
